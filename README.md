@@ -1,1 +1,1 @@
-# SEResearchGroup.github.io
+# SEResearchLab.github.io
