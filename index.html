@@ -1,250 +1,1446 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" class="scroll-smooth">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SEResearch Lab — Software Engineering Research Lab | UFRGS</title>
+  <meta name="description" content="SEResearch Lab at Instituto de Informática — UFRGS explores the human and social dimensions of software engineering, developer experience (DevEx), and human-AI collaboration.">
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:title" content="SEResearch Lab — Human & Social Aspects of Software Engineering">
+  <meta property="og:description" content="Investigating developer experience, human-AI collaboration, neurodiversity, and socio-technical software engineering at UFRGS.">
+  <meta property="og:type" content="website">
+
+  <!-- Typography: Outfit for Headings + Inter for Body -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-display: 'Outfit', var(--font-sans);
+      --font-mono: 'JetBrains Mono', monospace;
+
+      /* Official SEResearch Lab Option 04 Palette */
+      --color-deep-blue: #0B192C;
+      --color-electric-blue: #1E3E62;
+      --color-ocean-dark: #071224;
+      --color-accent-orange: #F97316;
+      --color-accent-dark-orange: #EA580C;
+      --color-accent-coral: #FB923C;
+      --color-accent-soft: #FFF7ED;
+
+      /* Clear Background & Neutrals */
+      --bg-canvas: #FFFFFF;
+      --bg-surface: #FAFAFA;
+      --bg-card: #FFFFFF;
+      --border-subtle: #E2E8F0;
+      --border-strong: #CBD5E1;
+      --text-main: #0B192C;
+      --text-muted: #64748B;
+      --text-light: #94A3B8;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-canvas);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection {
+      background-color: var(--color-accent-orange);
+      color: #FFFFFF;
+    }
+
+    a {
+      color: var(--color-electric-blue);
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    a:hover {
+      color: var(--color-accent-orange);
+    }
+
+    /* Container */
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Sticky Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-subtle);
+      transition: box-shadow 0.2s ease;
+    }
+
+    .nav-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 72px;
+      gap: 1rem;
+    }
+
+    .brand-lockup {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-main);
+      flex-shrink: 0;
+    }
+
+    .brand-icon-box {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .brand-lockup:hover .brand-icon-box {
+      border-color: var(--color-accent-orange);
+      transform: translateY(-1px);
+    }
+
+    .brand-title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      color: var(--color-deep-blue);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand-pill {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: var(--color-accent-soft);
+      color: var(--color-accent-dark-orange);
+      border: 1px solid #FFEDD5;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    .nav-link {
+      padding: 0.45rem 0.85rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: all 0.15s ease;
+      flex-shrink: 0;
+    }
+
+    .nav-link:hover {
+      color: var(--text-main);
+      background: var(--bg-surface);
+    }
+
+    .nav-link.active {
+      background: var(--color-electric-blue);
+      color: #FFFFFF !important;
+    }
+
+    .nav-btn-director {
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-main);
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      margin-left: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+
+    .nav-btn-director:hover {
+      background: var(--bg-surface);
+      border-color: var(--border-strong);
+      color: var(--text-main);
+    }
+
+    .nav-btn-brand {
+      padding: 0.45rem 1rem;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #FFFFFF !important;
+      background: linear-gradient(135deg, var(--color-accent-orange), var(--color-accent-dark-orange));
+      box-shadow: 0 2px 8px rgba(249, 115, 22, 0.25);
+      margin-left: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    .nav-btn-brand:hover {
+      opacity: 0.95;
+      transform: translateY(-1px);
+    }
+
+    /* Section Spacing & Headings */
+    section {
+      padding: 5.5rem 0 2.5rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 2.25rem;
+    }
+
+    .section-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-accent-orange);
+      flex-shrink: 0;
+      box-shadow: 0 0 10px rgba(249, 115, 22, 0.4);
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 2.25rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--color-deep-blue);
+    }
+
+    /* Hero Section */
+    #inicio {
+      padding: 6.5rem 0 4.5rem;
+      text-align: center;
+      position: relative;
+      background: radial-gradient(circle at 50% 20%, rgba(249, 115, 22, 0.05) 0%, rgba(255, 255, 255, 0) 70%);
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 999px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--color-electric-blue);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-h1 {
+      font-family: var(--font-display);
+      font-size: 4rem;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: var(--color-deep-blue);
+      line-height: 1.1;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-electric-blue);
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-p {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      max-width: 680px;
+      margin: 0 auto 2.2rem;
+      line-height: 1.6;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 3.5rem;
+    }
+
+    .btn {
+      padding: 0.85rem 2rem;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      border: none;
+      transition: all 0.15s ease;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: var(--color-electric-blue);
+      color: #FFFFFF !important;
+      box-shadow: 0 4px 14px rgba(30, 62, 98, 0.25);
+    }
+
+    .btn-primary:hover {
+      background: var(--color-deep-blue);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: #FFFFFF;
+      color: var(--text-main) !important;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-surface);
+      border-color: var(--border-strong);
+    }
+
+    .btn-orange {
+      background: linear-gradient(135deg, var(--color-accent-orange), var(--color-accent-dark-orange));
+      color: #FFFFFF !important;
+      box-shadow: 0 4px 14px rgba(249, 115, 22, 0.3);
+    }
+
+    .btn-orange:hover {
+      opacity: 0.95;
+      transform: translateY(-1px);
+    }
+
+    /* Interactive Floating Topic Pills */
+    .hero-pills-row {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .topic-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-main);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .topic-pill:hover {
+      border-color: var(--color-accent-orange);
+      color: var(--color-accent-orange);
+      transform: translateY(-1px);
+    }
+
+    /* Cards */
+    .card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      border-color: #CBD5E1;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+    }
+
+    /* About Pillars */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .pillar-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .pillar-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: var(--color-accent-soft);
+      color: var(--color-accent-orange);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    .pillar-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--color-deep-blue);
+    }
+
+    .pillar-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* People Section */
+    .coord-card {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      padding: 2rem;
+      border-radius: 28px;
+      margin-bottom: 2.5rem;
+    }
+
+    .coord-avatar-wrap {
+      width: 100px;
+      height: 100px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, var(--color-electric-blue), var(--color-accent-orange));
+      padding: 3px;
+      flex-shrink: 0;
+    }
+
+    .coord-avatar {
+      width: 100%;
+      height: 100%;
+      border-radius: 21px;
+      background: #F1F5F9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--color-electric-blue);
+      object-fit: cover;
+    }
+
+    .students-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .student-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      border-radius: 18px;
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      transition: all 0.15s ease;
+    }
+
+    .student-card:hover {
+      border-color: var(--color-accent-orange);
+      transform: translateY(-2px);
+    }
+
+    .student-avatar-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--bg-surface);
+      color: var(--color-electric-blue);
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+    }
+
+    .student-card h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--color-deep-blue);
+    }
+
+    .student-card .term {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--color-accent-dark-orange);
+      background: var(--color-accent-soft);
+      padding: 2px 8px;
+      border-radius: 999px;
+      display: inline-block;
+      align-self: flex-start;
+    }
+
+    .student-card .topic {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* Projects Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      border-radius: 24px;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1rem;
+      transition: all 0.2s ease;
+    }
+
+    .project-card:hover {
+      border-color: var(--color-accent-orange);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+      transform: translateY(-2px);
+    }
+
+    .project-badge {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 999px;
+      align-self: flex-start;
+      background: var(--bg-surface);
+      color: var(--color-electric-blue);
+      border: 1px solid var(--border-subtle);
+    }
+
+    /* Publications List & Search */
+    .pub-filter-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .pub-tabs {
+      display: flex;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      padding: 4px;
+      border-radius: 12px;
+      gap: 2px;
+    }
+
+    .pub-tab {
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .pub-tab.active {
+      background: var(--color-electric-blue);
+      color: #FFFFFF;
+    }
+
+    .pub-search {
+      padding: 8px 16px;
+      border-radius: 12px;
+      border: 1px solid var(--border-subtle);
+      font-size: 0.85rem;
+      width: 100%;
+      max-width: 380px;
+      font-family: var(--font-sans);
+      outline: none;
+    }
+
+    .pub-search:focus {
+      border-color: var(--color-accent-orange);
+    }
+
+    .pub-item {
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 0.85rem;
+      transition: border-color 0.15s;
+    }
+
+    .pub-item:hover {
+      border-color: #CBD5E1;
+    }
+
+    .pub-venue-badge {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 6px;
+      margin-right: 8px;
+      display: inline-block;
+    }
+
+    .badge-sbes { background: #FFF7ED; color: #C2410C; border: 1px solid #FFEDD5; }
+    .badge-ieee { background: #F0F9FF; color: #0369A1; border: 1px solid #E0F2FE; }
+    .badge-chase { background: #FEF3C7; color: #B45309; border: 1px solid #FDE68A; }
+    .badge-icse { background: #EEF2FF; color: #4338CA; border: 1px solid #E0E7FF; }
+    .badge-chi { background: #FFF1F2; color: #BE123C; border: 1px solid #FFE4E6; }
+    .badge-sbsc { background: #ECFDF5; color: #047857; border: 1px solid #D1FAE5; }
+
+    /* Brand Assets Section (Dedicated) */
+    .brand-section-box {
+      background: linear-gradient(135deg, #FFFFFF, var(--color-accent-soft));
+      border: 1px solid #FFEDD5;
+      border-radius: 28px;
+      padding: 2.5rem;
+      box-shadow: 0 4px 20px rgba(249, 115, 22, 0.06);
+    }
+
+    .swatches-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .swatch-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .swatch-dot {
+      width: 24px;
+      height: 24px;
+      border-radius: 8px;
+      box-shadow: inset 0 0 2px rgba(0,0,0,0.2);
+      flex-shrink: 0;
+    }
+
+    /* Contact Card */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      align-items: start;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--color-ocean-dark);
+      color: #94A3B8;
+      padding: 3.5rem 0;
+      border-top: 1px solid #1E293B;
+      font-size: 0.85rem;
+      margin-top: 5rem;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero-h1 { font-size: 2.8rem; }
+      .coord-card { flex-direction: column; text-align: center; }
+      .nav-links { display: none; }
+    }
+  </style>
 </head>
 <body>
-<x-dc>
-<helmet>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    body { margin: 0; font-family: "Inter", system-ui, sans-serif; color: #111111; background: #ffffff; line-height: 1.6; }
-    a { color: #1A4E8A; }
-    a:hover { color: #F58220; }
-    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
-  </style>
-</helmet>
 
-<header style="width:100%;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(0,0,0,0.06);position:fixed;top:0;left:0;z-index:100;">
-  <div style="max-width:1280px;margin:0 auto;padding:1rem 1.4rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;">
-    <strong style="font-size:1.05rem;white-space:nowrap;flex-shrink:0;">SEResearch Lab</strong>
-    <nav style="display:flex;align-items:center;gap:0;overflow-x:auto;white-space:nowrap;">
-      <a href="#inicio" style="{{ navStyles.inicio }}">Home</a>
-      <a href="#sobre" style="{{ navStyles.sobre }}">About</a>
-      <a href="#pessoas" style="{{ navStyles.pessoas }}">People</a>
-      <a href="#projetos" style="{{ navStyles.projetos }}">Projects</a>
-      <a href="#join" style="{{ navStyles.join }}">Join Us</a>
-      <a href="#news" style="{{ navStyles.news }}">News</a>
-      <a href="#publicacoes" style="{{ navStyles.publicacoes }}">Publications</a>
-      <a href="#alumni" style="{{ navStyles.alumni }}">Alumni</a>
-      <a href="#contato" style="{{ navStyles.contato }}">Contact</a>
-      <a href="karinakohl.github.io" style="padding:.45rem .8rem;margin-left:.4rem;border-radius:50px;font-size:.85rem;text-decoration:none;border:1px solid rgba(0,0,0,0.15);color:#111111;flex-shrink:0;">Karina Kohl →</a>
-    </nav>
-  </div>
-</header>
-
-<main style="max-width:1100px;margin:0 auto;padding:0 1.5rem;">
-
-  <section id="inicio" style="text-align:center;padding:10rem 0 4rem;position:relative;overflow:hidden;">
-    <div style="position:absolute;top:-120px;right:-80px;width:340px;height:340px;border-radius:50%;background:#F58220;opacity:.12;filter:blur(40px);"></div>
-    <div style="position:absolute;bottom:-100px;left:-60px;width:260px;height:260px;border-radius:50%;background:#1A4E8A;opacity:.10;filter:blur(40px);"></div>
-    <h1 style="font-size:3.5rem;font-weight:800;letter-spacing:-0.04em;margin:0 0 1rem;position:relative;">SEResearch Lab</h1>
-    <h2 style="font-size:1.5rem;font-weight:500;color:#6B6B6B;margin:0 0 1.5rem;position:relative;">Software Engineering Research Lab</h2>
-    <p style="font-size:1.4rem;color:#6B6B6B;max-width:700px;margin:0 auto;">Developer experience, human-AI collaboration, and the future of development.</p>
-    <div style="margin-top:2.5rem;display:flex;justify-content:center;gap:1rem;">
-      <a href="#projetos" style="padding:0.8rem 2rem;border-radius:50px;font-size:1rem;text-decoration:none;display:inline-block;border:none;background:#1A4E8A;color:#ffffff;">Projects</a>
-      <a href="#publicacoes" style="padding:0.8rem 2rem;border-radius:50px;font-size:1rem;text-decoration:none;display:inline-block;border:1px solid rgba(0,0,0,0.15);background:#ffffff;color:#111111;">Publications</a>
-    </div>
-  </section>
-
-  <section style="display:flex;justify-content:center;gap:1.5rem;padding:2rem 0 4rem;flex-wrap:wrap;">
-    <div style="width:60px;height:60px;border-radius:50%;background:#f8f9fa;border:1px solid #eee;display:flex;align-items:center;justify-content:center;font-size:1.5rem;animation:float 4s ease-in-out infinite;">💻</div>
-    <div style="width:60px;height:60px;border-radius:50%;background:#f8f9fa;border:1px solid #eee;display:flex;align-items:center;justify-content:center;font-size:1.5rem;animation:float 4s ease-in-out infinite;">✨</div>
-    <div style="width:60px;height:60px;border-radius:50%;background:#f8f9fa;border:1px solid #eee;display:flex;align-items:center;justify-content:center;font-size:1.5rem;animation:float 4s ease-in-out infinite;">📊</div>
-    <div style="width:60px;height:60px;border-radius:50%;background:#f8f9fa;border:1px solid #eee;display:flex;align-items:center;justify-content:center;font-size:1.5rem;animation:float 4s ease-in-out infinite;">🤝</div>
-    <div style="width:60px;height:60px;border-radius:50%;background:#f8f9fa;border:1px solid #eee;display:flex;align-items:center;justify-content:center;font-size:1.5rem;animation:float 4s ease-in-out infinite;">🧠</div>
-    <div style="width:60px;height:60px;border-radius:50%;background:#f8f9fa;border:1px solid #eee;display:flex;align-items:center;justify-content:center;font-size:1.5rem;animation:float 4s ease-in-out infinite;">🧪</div>
-    <div style="width:60px;height:60px;border-radius:50%;background:#f8f9fa;border:1px solid #eee;display:flex;align-items:center;justify-content:center;font-size:1.5rem;animation:float 4s ease-in-out infinite;">📘</div>
-  </section>
-
-  <section id="sobre" style="padding:6rem 0 2rem;">
-    <div style="display:flex;align-items:center;gap:.7rem;margin:0 0 2rem;"><span style="width:10px;height:10px;border-radius:50%;background:#F58220;flex-shrink:0;"></span><h2 style="font-size:2.5rem;letter-spacing:-0.02em;margin:0;">About us</h2></div>
-    <div>
-      <p style="font-size:1.1rem;max-width:800px;">The SEResearch Lab explores the <strong>human and social</strong> dimensions of software engineering. We study team collaboration dynamics, examine AI's impact on technical practices, and work to enhance the experience of the ones who build technology.</p>
-    </div>
-  </section>
-
-  <section id="pessoas" style="padding:6rem 0 2rem;">
-    <div style="display:flex;align-items:center;gap:.7rem;margin:0 0 2rem;"><span style="width:10px;height:10px;border-radius:50%;background:#F58220;flex-shrink:0;"></span><h2 style="font-size:2.5rem;letter-spacing:-0.02em;margin:0;">People</h2></div>
-
-    <div style="margin-bottom:3rem;">
-      <h3 style="font-size:0.9rem;text-transform:uppercase;color:#1A4E8A;letter-spacing:0.1em;margin:0 0 1.5rem;border-bottom:1px solid #eee;padding-bottom:5px;">Coordination</h3>
-      <div style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:1rem;">
-        <div style="display:flex;align-items:center;gap:1.5rem;background:#fcfcfc;border:1px solid #eee;padding:1.75rem;border-radius:40px;flex:1 1 340px;">
-          <img src="assets/karina.jpg" alt="Profa. Dra. Karina Kohl" style="width:90px;height:90px;border-radius:30px;object-fit:cover;flex-shrink:0;">
+  <!-- Sticky Header -->
+  <header>
+    <div class="container">
+      <div class="nav-wrapper">
+        <!-- Logo Lockup -->
+        <a href="#inicio" class="brand-lockup">
+          <div class="brand-icon-box">
+            <!-- Option 04 Human Logic & Pulse Wave SVG -->
+            <svg width="30" height="30" viewBox="0 0 200 200" fill="none">
+              <path d="M 52 70 L 25 100 L 52 130" stroke="#1E3E62" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M 148 70 L 175 100 L 148 130" stroke="#1E3E62" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M 38 100 L 70 100 L 82 72 L 95 132 L 110 88 L 120 114 L 130 100 L 162 100" stroke="#F97316" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" />
+              <circle cx="95" cy="56" r="10" fill="#FB923C" />
+              <circle cx="95" cy="56" r="4" fill="#FFFFFF" />
+              <circle cx="110" cy="74" r="6" fill="#F97316" />
+            </svg>
+          </div>
           <div>
-            <h3 style="margin:0 0 .3rem;">Profa. Dra. Karina Kohl</h3>
-            <p style="margin:0 0 .2rem;color:#6B6B6B;">Institute of Informatics - UFRGS</p>
-            <p style="margin:0;color:#6B6B6B;">Social and Human Aspects of Software Engineering</p>
+            <div class="brand-title">
+              <span>SEResearch Lab</span>
+              <span class="brand-pill">UFRGS</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Navigation Links -->
+        <nav class="nav-links">
+          <a href="#inicio" class="nav-link active">Home</a>
+          <a href="#sobre" class="nav-link">About</a>
+          <a href="#pessoas" class="nav-link">People</a>
+          <a href="#projetos" class="nav-link">Projects</a>
+          <a href="#join" class="nav-link">Join Us</a>
+          <a href="#news" class="nav-link">News</a>
+          <a href="#publicacoes" class="nav-link">Publications</a>
+          <a href="#alumni" class="nav-link">Alumni</a>
+          <a href="#contato" class="nav-link">Contact</a>
+          <a href="https://karinakohl.github.io" target="_blank" rel="noreferrer" class="nav-btn-director">
+            Karina Kohl →
+          </a>
+          <a href="#brand-assets" class="nav-btn-brand">
+            🎨 Brand Assets
+          </a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section (Clear Light Canvas) -->
+  <main class="container">
+    <section id="inicio">
+      <div class="hero-badge">
+        <span style="width: 8px; height: 8px; border-radius: 50%; background: #F97316; display: inline-block;"></span>
+        <span>Instituto de Informática — UFRGS</span>
+        <span style="color: #CBD5E1;">•</span>
+        <span>Software Engineering Research Lab</span>
+      </div>
+
+      <h1 class="hero-h1">SEResearch Lab</h1>
+      <h2 class="hero-h2">Human & Social Dimensions of Software Engineering</h2>
+      <p class="hero-p">
+        Developer experience, human-AI collaboration, neurodiversity, and the socio-technical future of development.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#projetos" class="btn btn-primary">Projects →</a>
+        <a href="#publicacoes" class="btn btn-secondary">Publications</a>
+        <a href="#brand-assets" class="btn btn-orange">🎨 Brand Assets & Kit</a>
+      </div>
+
+      <!-- Topic Badges -->
+      <div class="hero-pills-row">
+        <span class="topic-pill">💻 Developer Experience (DevEx)</span>
+        <span class="topic-pill">✨ Human-AI Collaboration</span>
+        <span class="topic-pill">🧠 ADHD & Neurodiversity</span>
+        <span class="topic-pill">🤝 Team Dynamics & Empathy</span>
+        <span class="topic-pill">📊 Empirical SE</span>
+        <span class="topic-pill">🧪 Code Review Sentiment</span>
+        <span class="topic-pill">📘 Accessibility in Tech</span>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="sobre">
+      <div class="section-header">
+        <span class="section-dot"></span>
+        <h2 class="section-title">About Us</h2>
+      </div>
+
+      <div class="card" style="background: #FAFAFA;">
+        <p style="font-size: 1.15rem; color: #1E293B; line-height: 1.7; max-width: 880px;">
+          The <strong>SEResearch Lab</strong> explores the <span style="color: var(--color-accent-orange); font-weight: 700;">human and social</span> dimensions of software engineering. We study team collaboration dynamics, examine AI's impact on technical practices, and work to enhance the experience of the ones who build technology.
+        </p>
+
+        <div class="pillars-grid">
+          <div class="pillar-card">
+            <div class="pillar-icon">🤝</div>
+            <h3>Socio-Technical Flow</h3>
+            <p>Understanding developer wellbeing, psychological safety, and friction-free cognitive workflows in modern teams.</p>
+          </div>
+          <div class="pillar-card">
+            <div class="pillar-icon">🧠</div>
+            <h3>Human-AI Symbiosis</h3>
+            <p>Investigating agentic workflows, prompt-to-verify shifts, and how copilots alter programming craft.</p>
+          </div>
+          <div class="pillar-card">
+            <div class="pillar-icon">✨</div>
+            <h3>Inclusion & Diversity</h3>
+            <p>Championing neurodiverse software engineers, ADHD inclusion, and accessible development environments.</p>
           </div>
         </div>
-       
       </div>
-    </div>
+    </section>
 
-    <div style="margin-bottom:3rem;">
-      <h3 style="font-size:0.9rem;text-transform:uppercase;color:#1A4E8A;letter-spacing:0.1em;margin:0 0 1.5rem;border-bottom:1px solid #eee;padding-bottom:5px;">Masters Students</h3>
-      
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:2.5rem;margin-bottom:2rem;">
-        <div>
-          <div style="width:90px;height:90px;background:#eee;border-radius:26px;margin-bottom:1rem;"></div>
-          <h3 style="margin:0;">Eduardo Peretto (2026/1)</h3>
-        </div>
-        <div>
-          <div style="width:90px;height:90px;background:#eee;border-radius:26px;margin-bottom:1rem;"></div>
-          <h3 style="margin:0;">Laura Ramos (2026/1)</h3>
-        </div>
-        <div>
-          <div style="width:90px;height:90px;background:#eee;border-radius:26px;margin-bottom:1rem;"></div>
-          <h3 style="margin:0;">Mariana Koppe (2026/1)</h3>
-        </div>
-        <div>
-          <div style="width:90px;height:90px;background:#eee;border-radius:26px;margin-bottom:1rem;"></div>
-          <h3 style="margin:0;">Henrique Balejos (2026/2)</h3>
-        </div>
-        <div>
-          <div style="width:90px;height:90px;background:#eee;border-radius:26px;margin-bottom:1rem;"></div>
-          <h3 style="margin:0;">Mateus Barbieri (2026/2)</h3>
-        </div>
-
-        
+    <!-- People Section -->
+    <section id="pessoas">
+      <div class="section-header">
+        <span class="section-dot"></span>
+        <h2 class="section-title">People</h2>
       </div>
 
-    <div style="margin-bottom:3rem;">
-      <h3 style="font-size:0.9rem;text-transform:uppercase;color:#1A4E8A;letter-spacing:0.1em;margin:0 0 1.5rem;border-bottom:1px solid #eee;padding-bottom:5px;">Undergrad Research Students</h3>
-      
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:2.5rem;margin-bottom:2rem;">
-        <div>
-          <div style="width:90px;height:90px;background:#eee;border-radius:26px;margin-bottom:1rem;"></div>
-          <h3 style="margin:0 0 .4rem;"></h3>
-          <p style="margin:0;color:#6B6B6B;font-size:.92rem;"></p>
+      <!-- Coordination -->
+      <div style="margin-bottom: 2rem;">
+        <h3 style="font-size: 0.82rem; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-electric-blue); border-bottom: 1px solid var(--border-subtle); padding-bottom: 8px; margin-bottom: 1.5rem;">
+          Coordination
+        </h3>
+
+        <div class="coord-card">
+          <div class="coord-avatar-wrap">
+            <div class="coord-avatar">KK</div>
+          </div>
+          <div>
+            <h3 style="font-size: 1.4rem; font-weight: 800; color: var(--color-deep-blue); margin-bottom: 4px;">
+              Profa. Dra. Karina Kohl
+            </h3>
+            <p style="color: var(--color-accent-dark-orange); font-weight: 600; font-size: 0.95rem; margin-bottom: 2px;">
+              Institute of Informatics — UFRGS
+            </p>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">
+              Social and Human Aspects of Software Engineering • DevEx & Human-AI
+            </p>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+              <a href="https://karinakohl.github.io" target="_blank" rel="noreferrer" class="btn btn-secondary" style="padding: 0.4rem 1rem; font-size: 0.8rem;">
+                Personal Page ↗
+              </a>
+              <a href="mailto:seresearch@inf.ufrgs.br" class="btn btn-secondary" style="padding: 0.4rem 1rem; font-size: 0.8rem;">
+                Email Contact
+              </a>
+            </div>
+          </div>
         </div>
-        
       </div>
-  </section>
 
-  <section id="projetos" style="padding:6rem 0 2rem;">
-    <div style="display:flex;align-items:center;gap:.7rem;margin:0 0 2rem;"><span style="width:10px;height:10px;border-radius:50%;background:#F58220;flex-shrink:0;"></span><h2 style="font-size:2.5rem;letter-spacing:-0.02em;margin:0;">Projects</h2></div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem;">
-      <div style="padding:2rem;border:1px solid #eee;border-radius:30px;">
-        <h3 style="margin:0 0 .6rem;">Developer Experience &amp; AI</h3>
-        <p style="margin:0;color:#6B6B6B;">How AI coding assistants reshape productivity, feedback loops, and cognitive load in day-to-day development work.</p>
+      <!-- Master's Students -->
+      <div style="margin-bottom: 2.5rem;">
+        <h3 style="font-size: 0.82rem; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-electric-blue); border-bottom: 1px solid var(--border-subtle); padding-bottom: 8px; margin-bottom: 1.5rem;">
+          Master's Students (PPGC — UFRGS)
+        </h3>
+
+        <div class="students-grid">
+          <div class="student-card">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div class="student-avatar-badge">EP</div>
+              <span class="term">2026/1</span>
+            </div>
+            <h4>Eduardo Peretto</h4>
+            <p class="topic">Developer Experience & Human-AI Collaboration</p>
+          </div>
+
+          <div class="student-card">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div class="student-avatar-badge">LR</div>
+              <span class="term">2026/1</span>
+            </div>
+            <h4>Laura Ramos</h4>
+            <p class="topic">Cognitive Dynamics & Code Review Sentiment</p>
+          </div>
+
+          <div class="student-card">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div class="student-avatar-badge">MK</div>
+              <span class="term">2026/1</span>
+            </div>
+            <h4>Mariana Koppe</h4>
+            <p class="topic">Neurodiversity & Workplace Inclusion in Tech</p>
+          </div>
+
+          <div class="student-card">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div class="student-avatar-badge">HB</div>
+              <span class="term">2026/2</span>
+            </div>
+            <h4>Henrique Balejos</h4>
+            <p class="topic">Empirical Verification in LLM Software Workflows</p>
+          </div>
+
+          <div class="student-card">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div class="student-avatar-badge">MB</div>
+              <span class="term">2026/2</span>
+            </div>
+            <h4>Mateus Barbieri</h4>
+            <p class="topic">Sentiment Analysis & Team Communication in SE</p>
+          </div>
+        </div>
       </div>
-      <div style="padding:2rem;border:1px solid #eee;border-radius:30px;">
-        <h3 style="margin:0 0 .6rem;">DevEx and ADHD</h3>
-        <p style="margin:0;color:#6B6B6B;">Communication, coordination, and inclusion challenges for developers with ADHD, in collaboration with PUCRS.</p>
-      </div>
-      <div style="padding:2rem;border:1px solid #eee;border-radius:30px;">
-        <h3 style="margin:0 0 .6rem;">Creative Problem-Solving in SE</h3>
-        <p style="margin:0;color:#6B6B6B;">How AI tools influence creative problem-solving practices among software developers.</p>
-      </div>
-    </div>
-  </section>
 
-  <section id="join" style="padding:6rem 0 2rem;">
-    <div style="display:flex;align-items:center;gap:.7rem;margin:0 0 2rem;"><span style="width:10px;height:10px;border-radius:50%;background:#F58220;flex-shrink:0;"></span><h2 style="font-size:2.5rem;letter-spacing:-0.02em;margin:0;">Join Us</h2></div>
-    <div style="background:#fcfcfc;border:1px solid #eee;border-radius:40px;padding:2.5rem;max-width:800px;">
-      <p style="margin:0 0 1.5rem;font-size:1.05rem;">We welcome undergraduate and graduate students interested in the human and social side of software engineering — developer experience, human-AI collaboration, and diversity and inclusion in tech. If this sounds like your kind of research, get in touch with a short note about your interests and, if available, a CV.</p>
-      <a href="#contato" style="padding:0.8rem 2rem;border-radius:50px;font-size:1rem;text-decoration:none;display:inline-block;border:none;background:#1A4E8A;color:#ffffff;">Get in touch</a>
-    </div>
-  </section>
-
-  <section id="news" style="padding:6rem 0 2rem;">
-    <div style="display:flex;align-items:center;gap:.7rem;margin:0 0 2rem;"><span style="width:10px;height:10px;border-radius:50%;background:#F58220;flex-shrink:0;"></span><h2 style="font-size:2.5rem;letter-spacing:-0.02em;margin:0;">News</h2></div>
-    <div>
-      <div style="padding:1rem 0;border-bottom:1px solid #f0f0f0;"><strong>2026</strong> — Paper accepted at SBES 2026: "An Emoji-Aware Analysis of Human Sentiment in Agentic Code Review."</div>
-      <div style="padding:1rem 0;border-bottom:1px solid #f0f0f0;"><strong>2026</strong> — Paper accepted at SBES 2026: "Understanding ADHD Developers' Challenges Through the Lens of Developer Experience."</div>
-      <div style="padding:1rem 0;border-bottom:1px solid #f0f0f0;"><strong>2026</strong> — "The Productivity Paradox of AI-Powered Development" published in IEEE Software.</div>
-      <div style="padding:1rem 0;border-bottom:1px solid #f0f0f0;"><strong>2026</strong> — "When Code Becomes Abundant: Redefining Software Engineering Around Orchestration and Verification" presented at ICSE-FOSE, Rio de Janeiro.</div>
-    </div>
-  </section>
-
-  <section id="publicacoes" style="padding:6rem 0 2rem;">
-    <div style="display:flex;align-items:center;gap:.7rem;margin:0 0 2rem;"><span style="width:10px;height:10px;border-radius:50%;background:#F58220;flex-shrink:0;"></span><h2 style="font-size:2.5rem;letter-spacing:-0.02em;margin:0;">Publications</h2></div>
-    <div style="margin-bottom:1.5rem;">
-      <div style="padding:1rem 0;border-bottom:1px solid #f0f0f0;"><strong>[2026]</strong></div>
-      <div style="padding:1rem 0;border-bottom:1px solid #f0f0f0;"><strong>[SBES][ACCEPTED]</strong> Kohl, Karina; Andrade, Anielle. An Emoji-Aware Analysis of Human Sentiment in Agentic Code Review. In: 40th Brazilian Symposium on Software Engineering. 2026. São Paulo, Brazil.</div>
-      <div style="padding:1rem 0;border-bottom:1px solid #f0f0f0;"><strong>[SBES][ACCEPTED]</strong> GOELZER, NATALYA; SARTORI, SOFIA; CARTAGENA, TATIANA; KOHL, KARINA; VELLOSO, GABRIEL; MARCZAK, SABRINA. Understanding ADHD Developers' Challenges Through the Lens of Developer Experience: A Qualitative Study of the r/ADHD_Programmers Community on Reddit. In: 40th Brazilian Symposium on Software Engineering. 2026. São Paulo, Brazil.</div>
-      <div style="padding:1rem 0;border-bottom:1px solid #f0f0f0;"><strong>[SBSC]</strong> CARTAGENA, Tatiana; GOELZER, Natalya; VELLOSO, Gabriel; SOUSA, Andrêus; BERIA, Francielle; KOHL, Karina; MARCZAK, Sabrina; GAMA, Kiev. A Conceptual Mapping of Communication Demands in Collaborative Software Development: Implications for the Inclusion of Developers with ADHD. In: SIMPÓSIO BRASILEIRO DE SISTEMAS COLABORATIVOS (SBSC), 21. , 2026, Porto Alegre/RS. Anais [...]. Porto Alegre: Sociedade Brasileira de Computação, 2026 . p. 464-473. ISSN 2326-2842. DOI: https://doi.org/10.5753/sbsc.2026.20781.</div>
-      <div style="padding:1rem 0;border-bottom:1px solid #f0f0f0;"><strong>[SBSC]</strong> GOELZER, Natalya; CARTAGENA, Tatiana; VELLOSO, Gabriel; KOHL, Karina; MARCZAK, Sabrina. A Socio-Technical Investigation of How Communication, Coordination, and Cooperation Shape the Developer Experience of ADHD Developers. In: DESENHO DE PESQUISA - SIMPÓSIO BRASILEIRO DE SISTEMAS COLABORATIVOS (SBSC), 21. , 2026, Porto Alegre/RS. Anais [...]. Porto Alegre: Sociedade Brasileira de Computação, 2026 . p. 75-80. DOI: https://doi.org/10.5753/sbsc_estendido.2026.20934.</div>
-      <div style="padding:1rem 0;border-bottom:1px solid #f0f0f0;"><strong>[IEEE Software]</strong> L. Fortes, G. V. Pereira, A. Coelho, R. Prikladnicki and K. Kohl, "The Productivity Paradox of AI-Powered Development," in IEEE Software, doi: 10.1109/MS.2026.3658651.</div>
-      <div style="padding:1rem 0;border-bottom:1px solid #f0f0f0;"><strong>[CHASE]</strong> CARTAGENA, TATIANA; GOELZER, NATALYA; VELLOSO, GABRIEL; SARTORI, SOFIA; KOHL, KARINA; MARCZAK, SABRINA. Challenges and Strategies of Brazilian ADHD Programmers: A Replication Study In: 19th International Conference on Cooperative and Human Aspects of Software Engineering, 2026, Rio de Janeiro, Brazil. 19th International Conference on Cooperative and Human Aspects of Software Engineering. 2026.</div>
-      <div style="padding:1rem 0;border-bottom:1px solid #f0f0f0;"><strong>[ICSE-FOSE]</strong> KOHL, KARINA; CARRO, LUIGI. When Code Becomes Abundant: Redefining Software Engineering Around Orchestration and Verification In: Future of Software Engineering - International Conference on Software Engineering (ICSE), 2026, Rio de Janeiro, Brazil. 2026.</div>
-    </div>
-    <div style="margin-bottom:1.5rem;">
-      <div style="padding:1rem 0;border-bottom:1px solid #f0f0f0;"><strong>[2025]</strong></div>
-      <div style="padding:1rem 0;border-bottom:1px solid #f0f0f0;"><strong>[SBQS]</strong> CARTAGENA, TATIANA; GOELZER, NATALYA; KOHL, KARINA; MARCZAK, SABRINA. Cognitive Mapping in Software Quality: A Theoretical Proposal for the Inclusion of People with ADHD In: Simpósio Brasileiro de Qualidade de Software, 2025, Brasil. Anais do XXIV Simpósio Brasileiro de Qualidade de Software (SBQS 2025). 2025, p.529 - 539.</div>
-      <div style="padding:1rem 0;border-bottom:1px solid #f0f0f0;"><strong>[CHASE]</strong> KOHL, KARINA; CHA, Y.; JACKSON, V.; PRIKLADNICKI, RAFAEL; VAN DER HOEK, D.; BRANHAM, S.. Creative Problem-Solving: A Study with Blind and Low Vision Software Professionals In: 18th International Conference on Cooperative and Human Aspects of Software Engineering, 2025, Ottawa. 18th International Conference on Cooperative and Human Aspects of Software Engineering. 2025.</div>
-      <div style="padding:1rem 0;border-bottom:1px solid #f0f0f0;"><strong>[CHI]</strong> CHA, YOONHA; JACKSON, VICTORIA; KOHL, KARINA; PRIKLADNICKI, RAFAEL; VAN DER HOEK, ANDRÉ; BRANHAM, STACY. The Dilemma of Building Do-It-Yourself (DIY) Solutions For Workplace Accessibility In: CHI 2025: CHI Conference on Human Factors in Computing Systems, 2025, Yokohama Japan. Proceedings of the 2025 CHI Conference on Human Factors in Computing Systems. New York: ACM, 2025, p.1.</div>
-    </div>
-    <div>
-      <div style="padding:1rem 0;border-bottom:1px solid #f0f0f0;"><strong>[&lt; 2024]</strong></div>
-      <div style="padding:1rem 0;border-bottom:1px solid #f0f0f0;"><strong>[SBES]</strong> KOHL, KARINA; PRIKLADNICKI, RAFAEL. Benefits and Difficulties of Gender Diversity on Software Development Teams: A Qualitative Study In: SBES 2022: XXXVI Brazilian Symposium on Software Engineering, 2022, Virtual Event Brazil. Proceedings of the XXXVI Brazilian Symposium on Software Engineering. New York: ACM, 2022, v.1, p.21 - 30.</div>
-      <div style="padding:1rem 0;border-bottom:1px solid #f0f0f0;"><strong>[ICEIS]</strong> KOHL, KARINA; PRIKLADNICKI, RAFAEL. Challenges Women in Software Engineering Leadership Roles Face: A Qualitative Study In: 24th International Conference on Enterprise Information System, Proceedings of the 23rd International Conference on Enterprise Information Systems. 2021, v.2.</div>
-      <div style="padding:1rem 0;border-bottom:1px solid #f0f0f0;"><strong>[CHASE]</strong> KOHL, KARINA; VASILESCU, BOGDAN; PRIKLADNICKI, RAFAEL. Multitasking Across Industry Projects In: ICSE '20: 42nd International Conference on Software Engineering, 2020, Seoul Republic of Korea. Proceedings of the IEEE/ACM 42nd International Conference on Software Engineering Workshops. New York: ACM, 2020, p.93 - 100.</div>
-      <div style="padding:1rem 0;border-bottom:1px solid #f0f0f0;"><strong>[CHASE]</strong> KOHL SILVEIRA, KARINA; PRIKLADNICKI, RAFAEL. A Systematic Mapping Study of Diversity in Software Engineering: A Perspective from the Agile Methodologies In: 2019 IEEE/ACM 12th International Workshop on Cooperative and Human Aspects of Software Engineering (CHASE), 2019, Montreal. 2019 IEEE/ACM 12th International Workshop on Cooperative and Human Aspects of Software Engineering (CHASE). 2019, v.1, p.7.</div>
-      <div style="padding:1rem 0;border-bottom:1px solid #f0f0f0;"><strong>[ICSE-SEIS]</strong> KOHL SILVEIRA, KARINA; MUSSE, SORAIA; H. MANSSOUR, ISABEL; VIEIRA, RENATA; PRIKLADNICKI, RAFAEL. Confidence in Programming Skills: Gender Insights From StackOverflow Developers Survey In: 2019 IEEE/ACM 41st International Conference on Software Engineering: Companion Proceedings (ICSE-Companion), 2019, Montreal. 2019 IEEE/ACM 41st International Conference on Software Engineering: Companion Proceedings (ICSE-Companion). 2019, v.1, p.234 - 235.</div>
-      <div style="padding:1rem 0;border-bottom:1px solid #f0f0f0;"><strong>[ICEIS]</strong> SILVEIRA, KARINA; MUSSE, SORAIA; MANSSOUR, ISABEL; VIEIRA, RENATA; PRIKLADNICKI, RAFAEL. Reinforcing Diversity Company Policies: Insights from StackOverflow Developers Survey In: 21st International Conference on Enterprise Information Systems, 2019, Heraklion. Proceedings of the 21st International Conference on Enterprise Information Systems. SCITEPRESS - Science and Technology Publications, 2019.</div>
-    </div>
-  </section>
-
-  <section id="alumni" style="padding:6rem 0 2rem;">
-    <div style="display:flex;align-items:center;gap:.7rem;margin:0 0 2rem;"><span style="width:10px;height:10px;border-radius:50%;background:#F58220;flex-shrink:0;"></span><h2 style="font-size:2.5rem;letter-spacing:-0.02em;margin:0;">Alumni</h2></div>
-    <p style="color:#6B6B6B;max-width:700px;">SEResearch Lab is a young and growing lab. This section will list members after they complete their studies with us.</p>
-  </section>
-
-  <section id="contato" style="padding:6rem 0 4rem;">
-    <div style="display:flex;align-items:center;gap:.7rem;margin:0 0 2rem;"><span style="width:10px;height:10px;border-radius:50%;background:#F58220;flex-shrink:0;"></span><h2 style="font-size:2.5rem;letter-spacing:-0.02em;margin:0;">Contact</h2></div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2.5rem;align-items:start;">
+      <!-- Undergrad Research Students -->
       <div>
-        <p style="margin:0 0 .8rem;"><strong>Email</strong><br>seresearch@inf.ufrgs.br</p>
-        <p style="margin:0;"><strong>Address</strong><br>Instituto de Informática — UFRGS<br>Porto Alegre, RS, Brazil</p>
+        <h3 style="font-size: 0.82rem; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-electric-blue); border-bottom: 1px solid var(--border-subtle); padding-bottom: 8px; margin-bottom: 1.5rem;">
+          Undergraduate Research Students (Iniciação Científica)
+        </h3>
+        <div class="card" style="border-style: dashed; text-align: center; padding: 2rem;">
+          <p style="color: var(--text-muted); font-size: 0.95rem;">
+            We regularly welcome undergraduate students from UFRGS for Iniciação Científica (IC) research scholarships and course graduation projects (TCC).
+          </p>
+          <a href="#join" style="font-size: 0.85rem; font-weight: 700; color: var(--color-accent-orange); display: inline-block; margin-top: 8px;">
+            Join our research group →
+          </a>
+        </div>
       </div>
-      <div style="aspect-ratio:16/10;border-radius:30px;background:repeating-linear-gradient(45deg,#f4f4f4,#f4f4f4 10px,#ececec 10px,#ececec 20px);display:flex;align-items:center;justify-content:center;font-family:monospace;color:#999;font-size:.85rem;">map placeholder</div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projetos">
+      <div class="section-header">
+        <span class="section-dot"></span>
+        <h2 class="section-title">Research Projects</h2>
+      </div>
+
+      <div class="projects-grid">
+        <div class="project-card">
+          <div>
+            <span class="project-badge">Empirical SE</span>
+            <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--color-deep-blue); margin: 0.8rem 0 0.5rem;">
+              Developer Experience & AI
+            </h3>
+            <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.55;">
+              How AI coding assistants reshape developer productivity, feedback loops, and cognitive load in day-to-day development work.
+            </p>
+          </div>
+          <div style="font-size: 0.78rem; color: var(--text-light); border-top: 1px solid var(--border-subtle); padding-top: 0.75rem;">
+            Copilots • Cognitive Load • Verification
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div>
+            <span class="project-badge" style="color: var(--color-accent-dark-orange); background: var(--color-accent-soft);">Collaborative • PUCRS</span>
+            <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--color-deep-blue); margin: 0.8rem 0 0.5rem;">
+              DevEx and ADHD
+            </h3>
+            <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.55;">
+              Communication, coordination, and inclusion challenges for developers with ADHD, in continuous collaboration with PUCRS.
+            </p>
+          </div>
+          <div style="font-size: 0.78rem; color: var(--text-light); border-top: 1px solid var(--border-subtle); padding-top: 0.75rem;">
+            Neurodiversity • Coordination • Inclusion
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div>
+            <span class="project-badge">Cognitive SE</span>
+            <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--color-deep-blue); margin: 0.8rem 0 0.5rem;">
+              Creative Problem-Solving in SE
+            </h3>
+            <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.55;">
+              How modern AI tools influence creative problem-solving practices and architectural exploration among software developers.
+            </p>
+          </div>
+          <div style="font-size: 0.78rem; color: var(--text-light); border-top: 1px solid var(--border-subtle); padding-top: 0.75rem;">
+            Creativity • Divergent Thinking • Tooling
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Join Us Section -->
+    <section id="join">
+      <div class="section-header">
+        <span class="section-dot"></span>
+        <h2 class="section-title">Join Us</h2>
+      </div>
+
+      <div class="card" style="background: var(--bg-surface);">
+        <p style="font-size: 1.1rem; color: var(--text-main); margin-bottom: 1.5rem; line-height: 1.6;">
+          We welcome undergraduate and graduate students interested in the human and social side of software engineering — developer experience, human-AI collaboration, and diversity and inclusion in tech.
+        </p>
+        <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 2rem;">
+          If this sounds like your kind of research, get in touch with a short note about your research interests and a CV.
+        </p>
+        <a href="#contato" class="btn btn-primary">Get in touch →</a>
+      </div>
+    </section>
+
+    <!-- News Section -->
+    <section id="news">
+      <div class="section-header">
+        <span class="section-dot"></span>
+        <h2 class="section-title">News</h2>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+        <div class="card" style="padding: 1.25rem 1.5rem; display: flex; align-items: baseline; gap: 1rem;">
+          <strong style="font-family: var(--font-mono); color: var(--color-accent-dark-orange); font-size: 0.9rem;">2026</strong>
+          <span style="font-size: 0.95rem; color: var(--text-main);">
+            Paper accepted at <strong>SBES 2026</strong>: "An Emoji-Aware Analysis of Human Sentiment in Agentic Code Review."
+          </span>
+        </div>
+
+        <div class="card" style="padding: 1.25rem 1.5rem; display: flex; align-items: baseline; gap: 1rem;">
+          <strong style="font-family: var(--font-mono); color: var(--color-accent-dark-orange); font-size: 0.9rem;">2026</strong>
+          <span style="font-size: 0.95rem; color: var(--text-main);">
+            Paper accepted at <strong>SBES 2026</strong>: "Understanding ADHD Developers' Challenges Through the Lens of Developer Experience."
+          </span>
+        </div>
+
+        <div class="card" style="padding: 1.25rem 1.5rem; display: flex; align-items: baseline; gap: 1rem;">
+          <strong style="font-family: var(--font-mono); color: var(--color-accent-dark-orange); font-size: 0.9rem;">2026</strong>
+          <span style="font-size: 0.95rem; color: var(--text-main);">
+            "The Productivity Paradox of AI-Powered Development" published in <strong>IEEE Software</strong>.
+          </span>
+        </div>
+
+        <div class="card" style="padding: 1.25rem 1.5rem; display: flex; align-items: baseline; gap: 1rem;">
+          <strong style="font-family: var(--font-mono); color: var(--color-accent-dark-orange); font-size: 0.9rem;">2026</strong>
+          <span style="font-size: 0.95rem; color: var(--text-main);">
+            "When Code Becomes Abundant: Redefining Software Engineering Around Orchestration and Verification" presented at <strong>ICSE-FOSE</strong>, Rio de Janeiro.
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publicacoes">
+      <div class="section-header">
+        <span class="section-dot"></span>
+        <h2 class="section-title">Publications</h2>
+      </div>
+
+      <div class="pub-filter-bar">
+        <div class="pub-tabs">
+          <button class="pub-tab active" onclick="filterPubs('all')">All</button>
+          <button class="pub-tab" onclick="filterPubs('2026')">2026</button>
+          <button class="pub-tab" onclick="filterPubs('2025')">2025</button>
+          <button class="pub-tab" onclick="filterPubs('pre2024')">&lt; 2024</button>
+        </div>
+        <input type="text" id="pub-search" class="pub-search" placeholder="Search publications by author, keyword, venue..." onkeyup="searchPubs()">
+      </div>
+
+      <div id="pub-list">
+        <!-- 2026 -->
+        <div class="pub-item" data-year="2026">
+          <span class="pub-venue-badge badge-sbes">SBES 2026</span>
+          <strong style="font-size: 1rem; color: var(--color-deep-blue); display: block; margin-top: 4px;">
+            An Emoji-Aware Analysis of Human Sentiment in Agentic Code Review
+          </strong>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 4px;">
+            Kohl, Karina; Andrade, Anielle. In: 40th Brazilian Symposium on Software Engineering (SBES 2026). São Paulo, Brazil.
+          </p>
+        </div>
+
+        <div class="pub-item" data-year="2026">
+          <span class="pub-venue-badge badge-sbes">SBES 2026</span>
+          <strong style="font-size: 1rem; color: var(--color-deep-blue); display: block; margin-top: 4px;">
+            Understanding ADHD Developers' Challenges Through the Lens of Developer Experience: A Qualitative Study of the r/ADHD_Programmers Community on Reddit
+          </strong>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 4px;">
+            GOELZER, NATALYA; SARTORI, SOFIA; CARTAGENA, TATIANA; KOHL, KARINA; VELLOSO, GABRIEL; MARCZAK, SABRINA. In: 40th SBES 2026. São Paulo, Brazil.
+          </p>
+        </div>
+
+        <div class="pub-item" data-year="2026">
+          <span class="pub-venue-badge badge-sbsc">SBSC 2026</span>
+          <strong style="font-size: 1rem; color: var(--color-deep-blue); display: block; margin-top: 4px;">
+            A Conceptual Mapping of Communication Demands in Collaborative Software Development: Implications for the Inclusion of Developers with ADHD
+          </strong>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 4px;">
+            CARTAGENA, Tatiana; GOELZER, Natalya; VELLOSO, Gabriel; SOUSA, Andrêus; BERIA, Francielle; KOHL, Karina; MARCZAK, Sabrina; GAMA, Kiev. In: SBSC 2026, p. 464-473. DOI: 10.5753/sbsc.2026.20781.
+          </p>
+        </div>
+
+        <div class="pub-item" data-year="2026">
+          <span class="pub-venue-badge badge-sbsc">SBSC 2026</span>
+          <strong style="font-size: 1rem; color: var(--color-deep-blue); display: block; margin-top: 4px;">
+            A Socio-Technical Investigation of How Communication, Coordination, and Cooperation Shape the Developer Experience of ADHD Developers
+          </strong>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 4px;">
+            GOELZER, Natalya; CARTAGENA, Tatiana; VELLOSO, Gabriel; KOHL, Karina; MARCZAK, Sabrina. In: SBSC 2026, p. 75-80. DOI: 10.5753/sbsc_estendido.2026.20934.
+          </p>
+        </div>
+
+        <div class="pub-item" data-year="2026">
+          <span class="pub-venue-badge badge-ieee">IEEE Software</span>
+          <strong style="font-size: 1rem; color: var(--color-deep-blue); display: block; margin-top: 4px;">
+            The Productivity Paradox of AI-Powered Development
+          </strong>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 4px;">
+            L. Fortes, G. V. Pereira, A. Coelho, R. Prikladnicki and K. Kohl. In: IEEE Software, doi: 10.1109/MS.2026.3658651.
+          </p>
+        </div>
+
+        <div class="pub-item" data-year="2026">
+          <span class="pub-venue-badge badge-chase">CHASE 2026</span>
+          <strong style="font-size: 1rem; color: var(--color-deep-blue); display: block; margin-top: 4px;">
+            Challenges and Strategies of Brazilian ADHD Programmers: A Replication Study
+          </strong>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 4px;">
+            CARTAGENA, TATIANA; GOELZER, NATALYA; VELLOSO, GABRIEL; SARTORI, SOFIA; KOHL, KARINA; MARCZAK, SABRINA. In: 19th CHASE, Rio de Janeiro, Brazil.
+          </p>
+        </div>
+
+        <div class="pub-item" data-year="2026">
+          <span class="pub-venue-badge badge-icse">ICSE-FOSE 2026</span>
+          <strong style="font-size: 1rem; color: var(--color-deep-blue); display: block; margin-top: 4px;">
+            When Code Becomes Abundant: Redefining Software Engineering Around Orchestration and Verification
+          </strong>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 4px;">
+            KOHL, KARINA; CARRO, LUIGI. In: Future of Software Engineering - ICSE 2026, Rio de Janeiro, Brazil.
+          </p>
+        </div>
+
+        <!-- 2025 -->
+        <div class="pub-item" data-year="2025">
+          <span class="pub-venue-badge badge-sbes">SBQS 2025</span>
+          <strong style="font-size: 1rem; color: var(--color-deep-blue); display: block; margin-top: 4px;">
+            Cognitive Mapping in Software Quality: A Theoretical Proposal for the Inclusion of People with ADHD
+          </strong>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 4px;">
+            CARTAGENA, TATIANA; GOELZER, NATALYA; KOHL, KARINA; MARCZAK, SABRINA. In: SBQS 2025, p. 529-539.
+          </p>
+        </div>
+
+        <div class="pub-item" data-year="2025">
+          <span class="pub-venue-badge badge-chase">CHASE 2025</span>
+          <strong style="font-size: 1rem; color: var(--color-deep-blue); display: block; margin-top: 4px;">
+            Creative Problem-Solving: A Study with Blind and Low Vision Software Professionals
+          </strong>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 4px;">
+            KOHL, KARINA; CHA, Y.; JACKSON, V.; PRIKLADNICKI, RAFAEL; VAN DER HOEK, D.; BRANHAM, S. In: 18th CHASE 2025, Ottawa.
+          </p>
+        </div>
+
+        <div class="pub-item" data-year="2025">
+          <span class="pub-venue-badge badge-chi">CHI 2025</span>
+          <strong style="font-size: 1rem; color: var(--color-deep-blue); display: block; margin-top: 4px;">
+            The Dilemma of Building Do-It-Yourself (DIY) Solutions For Workplace Accessibility
+          </strong>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 4px;">
+            CHA, YOONHA; JACKSON, VICTORIA; KOHL, KARINA; PRIKLADNICKI, RAFAEL; VAN DER HOEK, ANDRÉ; BRANHAM, STACY. In: CHI 2025, Yokohama Japan. ACM.
+          </p>
+        </div>
+
+        <!-- Pre-2024 -->
+        <div class="pub-item" data-year="pre2024">
+          <span class="pub-venue-badge badge-sbes">SBES 2022</span>
+          <strong style="font-size: 1rem; color: var(--color-deep-blue); display: block; margin-top: 4px;">
+            Benefits and Difficulties of Gender Diversity on Software Development Teams: A Qualitative Study
+          </strong>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 4px;">
+            KOHL, KARINA; PRIKLADNICKI, RAFAEL. In: SBES 2022, ACM, p. 21-30.
+          </p>
+        </div>
+
+        <div class="pub-item" data-year="pre2024">
+          <span class="pub-venue-badge badge-sbes">ICEIS 2021</span>
+          <strong style="font-size: 1rem; color: var(--color-deep-blue); display: block; margin-top: 4px;">
+            Challenges Women in Software Engineering Leadership Roles Face: A Qualitative Study
+          </strong>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 4px;">
+            KOHL, KARINA; PRIKLADNICKI, RAFAEL. In: 24th ICEIS, 2021.
+          </p>
+        </div>
+
+        <div class="pub-item" data-year="pre2024">
+          <span class="pub-venue-badge badge-chase">CHASE 2020</span>
+          <strong style="font-size: 1rem; color: var(--color-deep-blue); display: block; margin-top: 4px;">
+            Multitasking Across Industry Projects
+          </strong>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 4px;">
+            KOHL, KARINA; VASILESCU, BOGDAN; PRIKLADNICKI, RAFAEL. In: ICSE '20 Workshops (CHASE 2020), Seoul.
+          </p>
+        </div>
+
+        <div class="pub-item" data-year="pre2024">
+          <span class="pub-venue-badge badge-chase">CHASE 2019</span>
+          <strong style="font-size: 1rem; color: var(--color-deep-blue); display: block; margin-top: 4px;">
+            A Systematic Mapping Study of Diversity in Software Engineering: A Perspective from the Agile Methodologies
+          </strong>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 4px;">
+            KOHL SILVEIRA, KARINA; PRIKLADNICKI, RAFAEL. In: CHASE 2019, Montreal.
+          </p>
+        </div>
+
+        <div class="pub-item" data-year="pre2024">
+          <span class="pub-venue-badge badge-icse">ICSE-SEIS 2019</span>
+          <strong style="font-size: 1rem; color: var(--color-deep-blue); display: block; margin-top: 4px;">
+            Confidence in Programming Skills: Gender Insights From StackOverflow Developers Survey
+          </strong>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 4px;">
+            KOHL SILVEIRA, KARINA; MUSSE, SORAIA; H. MANSSOUR, ISABEL; VIEIRA, RENATA; PRIKLADNICKI, RAFAEL. In: ICSE-Companion 2019.
+          </p>
+        </div>
+
+        <div class="pub-item" data-year="pre2024">
+          <span class="pub-venue-badge badge-sbes">ICEIS 2019</span>
+          <strong style="font-size: 1rem; color: var(--color-deep-blue); display: block; margin-top: 4px;">
+            Reinforcing Diversity Company Policies: Insights from StackOverflow Developers Survey
+          </strong>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 4px;">
+            SILVEIRA, KARINA; MUSSE, SORAIA; MANSSOUR, ISABEL; VIEIRA, RENATA; PRIKLADNICKI, RAFAEL. In: 21st ICEIS, 2019.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Brand Assets & Media Kit Section (Clear Background & Highlighting Brand Colors) -->
+    <section id="brand-assets">
+      <div class="section-header">
+        <span class="section-dot"></span>
+        <h2 class="section-title">Brand Assets & Identity System</h2>
+      </div>
+
+      <div class="brand-section-box">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <h3 style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; color: var(--color-deep-blue);">
+              Official Visual Identity: Option 04 Human Logic & Pulse Wave
+            </h3>
+            <p style="font-size: 0.95rem; color: var(--text-muted); margin-top: 4px;">
+              Designed specifically for high clarity on white and clear backgrounds, with deep blue engineering brackets and radiant orange empathy.
+            </p>
+          </div>
+          <a href="/standalone.html" target="_blank" class="btn btn-orange" style="padding: 0.6rem 1.4rem; font-size: 0.85rem;">
+            Full Brand Kit & PPTX Deck ↗
+          </a>
+        </div>
+
+        <!-- Color Tokens -->
+        <div class="swatches-grid">
+          <div class="swatch-card">
+            <span class="swatch-dot" style="background: #0B192C;"></span>
+            <div>
+              <strong style="font-size: 0.82rem; display: block; color: #0B192C;">Deep Midnight</strong>
+              <code style="font-size: 0.72rem; color: var(--text-muted);">#0B192C</code>
+            </div>
+          </div>
+
+          <div class="swatch-card">
+            <span class="swatch-dot" style="background: #1E3E62;"></span>
+            <div>
+              <strong style="font-size: 0.82rem; display: block; color: #0B192C;">Electric Navy</strong>
+              <code style="font-size: 0.72rem; color: var(--text-muted);">#1E3E62</code>
+            </div>
+          </div>
+
+          <div class="swatch-card">
+            <span class="swatch-dot" style="background: #F97316;"></span>
+            <div>
+              <strong style="font-size: 0.82rem; display: block; color: #0B192C;">Radiant Orange</strong>
+              <code style="font-size: 0.72rem; color: var(--color-accent-dark-orange);">#F97316</code>
+            </div>
+          </div>
+
+          <div class="swatch-card">
+            <span class="swatch-dot" style="background: #FB923C;"></span>
+            <div>
+              <strong style="font-size: 0.82rem; display: block; color: #0B192C;">Warm Coral</strong>
+              <code style="font-size: 0.72rem; color: var(--color-accent-dark-orange);">#FB923C</code>
+            </div>
+          </div>
+        </div>
+
+        <!-- Download Buttons -->
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; border-top: 1px solid #FED7AA; padding-top: 1.5rem;">
+          <a href="/standalone.html" class="btn btn-secondary" style="font-size: 0.85rem;">
+            📥 Download Vector SVG Logo
+          </a>
+          <a href="/standalone.html" class="btn btn-secondary" style="font-size: 0.85rem;">
+            📊 16:9 Slide Presentation (.PPTX)
+          </a>
+          <a href="/standalone.html" class="btn btn-secondary" style="font-size: 0.85rem;">
+            📦 Complete Brand Kit (ZIP)
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Alumni Section -->
+    <section id="alumni">
+      <div class="section-header">
+        <span class="section-dot"></span>
+        <h2 class="section-title">Alumni</h2>
+      </div>
+      <div class="card" style="background: var(--bg-surface);">
+        <p style="color: var(--text-muted); font-size: 1rem;">
+          SEResearch Lab is a young and rapidly growing lab. This section will feature our alumni as they conclude their postgraduate and undergraduate research with us.
+        </p>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contato">
+      <div class="section-header">
+        <span class="section-dot"></span>
+        <h2 class="section-title">Contact & Location</h2>
+      </div>
+
+      <div class="contact-grid">
+        <div class="card">
+          <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--color-deep-blue); margin-bottom: 1.25rem;">
+            Get in Touch
+          </h3>
+          <p style="margin-bottom: 1rem; font-size: 0.95rem;">
+            <strong>Email</strong><br>
+            <a href="mailto:seresearch@inf.ufrgs.br" style="color: var(--color-accent-dark-orange); font-weight: 600;">seresearch@inf.ufrgs.br</a>
+          </p>
+          <p style="font-size: 0.95rem; line-height: 1.6;">
+            <strong>Address</strong><br>
+            Instituto de Informática — UFRGS<br>
+            Campus do Vale — Av. Bento Gonçalves, 9500<br>
+            Porto Alegre, RS, Brazil
+          </p>
+        </div>
+
+        <div class="card" style="background: #0B192C; color: #FFFFFF;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #F97316; font-weight: 700;">UFRGS CAMPUS DO VALE</span>
+            <span style="font-size: 0.8rem; color: #94A3B8;">Porto Alegre, RS</span>
+          </div>
+          <h4 style="font-family: var(--font-display); font-size: 1.3rem; font-weight: 800; margin-bottom: 0.5rem;">
+            Instituto de Informática
+          </h4>
+          <p style="font-size: 0.85rem; color: #CBD5E1; line-height: 1.6; margin-bottom: 1.5rem;">
+            Home to cutting-edge research in computer systems, artificial intelligence, and socio-technical software engineering.
+          </p>
+          <a href="https://maps.google.com/?q=Instituto+de+Informatica+UFRGS" target="_blank" rel="noreferrer" class="btn btn-orange" style="font-size: 0.8rem; padding: 0.5rem 1.2rem;">
+            View on Google Maps ↗
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div>
+          <strong style="color: #FFFFFF; font-family: var(--font-display); font-size: 1rem; display: block; margin-bottom: 4px;">
+            SEResearch Lab
+          </strong>
+          <span>© <span id="year">2026</span> SEResearch Lab — Instituto de Informática (UFRGS). All rights reserved.</span>
+        </div>
+        <div style="display: flex; gap: 1.2rem; align-items: center;">
+          <a href="#inicio" style="color: #94A3B8;">Home</a>
+          <a href="#publicacoes" style="color: #94A3B8;">Publications</a>
+          <a href="#brand-assets" style="color: var(--color-accent-orange); font-weight: 700;">Brand Assets</a>
+          <a href="https://inf.ufrgs.br" target="_blank" rel="noreferrer" style="color: #94A3B8;">INF UFRGS</a>
+        </div>
+      </div>
     </div>
-  </section>
+  </footer>
 
-</main>
+  <!-- Simple Client-side Logic for Filter & Search -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-<footer style="text-align:center;padding:4rem 0;color:#6B6B6B;border-top:1px solid #eee;">
-  © {{ year }} SEResearch Lab — UFRGS
-</footer>
+    // Publication Year Filter
+    function filterPubs(year) {
+      const tabs = document.querySelectorAll('.pub-tab');
+      tabs.forEach(t => t.classList.remove('active'));
+      event.target.classList.add('active');
 
-</x-dc>
-<script type="text/x-dc" data-dc-script>
-class Component extends DCLogic {
-  state = { active: 'inicio' };
-  componentDidMount() {
-    this._ids = ['inicio','sobre','pessoas','projetos','join','news','publicacoes','alumni','contato'];
-    this._onScroll = () => {
-      let current = this._ids[0];
-      for (const id of this._ids) {
+      const items = document.querySelectorAll('.pub-item');
+      items.forEach(item => {
+        if (year === 'all' || item.getAttribute('data-year') === year) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    // Publication Keyword Search
+    function searchPubs() {
+      const q = document.getElementById('pub-search').value.toLowerCase();
+      const items = document.querySelectorAll('.pub-item');
+      items.forEach(item => {
+        const text = item.textContent.toLowerCase();
+        if (text.includes(q)) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    // Scroll spy for navigation active state
+    window.addEventListener('scroll', () => {
+      const sections = ['inicio', 'sobre', 'pessoas', 'projetos', 'join', 'news', 'publicacoes', 'brand-assets', 'alumni', 'contato'];
+      let current = 'inicio';
+      sections.forEach(id => {
         const el = document.getElementById(id);
-        if (el && window.pageYOffset >= el.offsetTop - 120) current = id;
-      }
-      if (current !== this.state.active) this.setState({ active: current });
-    };
-    window.addEventListener('scroll', this._onScroll);
-  }
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this._onScroll);
-  }
-  navStyle(id) {
-    const base = { padding: '.45rem .7rem', borderRadius: 50, fontSize: '.85rem', marginLeft: '.1rem', textDecoration: 'none', transition: '0.2s', flexShrink: 0 };
-    if (this.state.active === id) return Object.assign({}, base, { background: '#1A4E8A', color: '#ffffff' });
-    return Object.assign({}, base, { background: 'transparent', color: '#111111' });
-  }
-  renderVals() {
-    const navStyles = {};
-    ['inicio','sobre','pessoas','projetos','join','news','publicacoes','alumni','contato'].forEach(id => {
-      navStyles[id] = this.navStyle(id);
+        if (el && window.pageYOffset >= el.offsetTop - 120) {
+          current = id;
+        }
+      });
+
+      const links = document.querySelectorAll('.nav-link');
+      links.forEach(link => {
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
     });
-    return { navStyles, year: new Date().getFullYear() };
-  }
-}
-</script>
+  </script>
 </body>
 </html>

@@ -543,7 +543,7 @@
       .slide-aspect { padding: 20px; }
     }
   </style>
-<script src="/_aistudio-iframe.js?v=2f1c016a"></script></head>
+</head>
 <body>
 
   <!-- Toast Notification element -->
@@ -939,7 +939,7 @@
       <!-- Live 16:9 Slide Preview Stage -->
       <div id="slide-container" class="slide-aspect" style="background: #071224;">
         <!-- Header -->
-        <div style="display: flex; justify-content: space-between; align-items: center; z-index: 2;">
+        <div style="display: flex; justify-content: space-between; align-items: center; z-index: 2; gap: 12px;">
           <div style="display: flex; align-items: center; gap: 12px;">
             <svg width="40" height="40" viewBox="0 0 200 200" fill="none">
               <path d="M 52 70 L 25 100 L 52 130" stroke="#1E3E62" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" />
@@ -951,9 +951,12 @@
             </svg>
             <span id="slide-brand-text" style="font-size: 18px; font-weight: 900; font-family: var(--font-display); color: #fff;">SEResearch Lab</span>
           </div>
-          <span id="slide-badge" style="font-size: 11px; font-family: var(--font-mono); font-weight: 700; padding: 4px 12px; border-radius: 999px; background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.15);">
-            ICSE 2026 Keynote Address
-          </span>
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <div id="slide-university-logo" title="Instituto de Informática — UFRGS" style="display: flex; align-items: center; height: 26px;"></div>
+            <span id="slide-badge" style="font-size: 11px; font-family: var(--font-mono); font-weight: 700; padding: 4px 12px; border-radius: 999px; background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.15); white-space: nowrap;">
+              ICSE 2026 Keynote Address
+            </span>
+          </div>
         </div>
 
         <!-- Main Topic -->
@@ -971,7 +974,7 @@
 
         <!-- Footer -->
         <div id="slide-footer" style="display: flex; justify-content: space-between; font-size: 12px; color: #94A3B8; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 14px; font-weight: 700; z-index: 2;">
-          <span>Prof. Dr. Alex Mercer, Director</span>
+          <span>Prof. Dr. Alex Mercer, Director • Instituto de Informática — UFRGS</span>
           <span style="font-family: var(--font-mono); color: #fff;">seresearchlab.org</span>
         </div>
       </div>
@@ -1398,6 +1401,52 @@
       }
     };
 
+    // University Logo SVG (Instituto de Informática - UFRGS)
+    function UNIVERSITY_LOGO_SVG(isDark = true) {
+      const textColor = isDark ? '#FFFFFF' : '#0B192C';
+      const subtitleColor = isDark ? '#CBD5E1' : '#64748B';
+      const redColor = '#E11D48';
+      return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 388" width="100%" height="100%" style="display:block;">
+        <path fill="${subtitleColor}" d="M498.758,247.191c3.273,0,5.836-1.133,7.68-3.402c1.848-2.285,2.77-5.449,2.77-9.496c0-4.129-0.922-7.363-2.77-9.699c-1.844-2.336-4.406-3.504-7.68-3.504c-3.258,0-5.809,1.168-7.656,3.504c-1.844,2.336-2.77,5.57-2.77,9.699c0,4.047,0.914,7.211,2.742,9.496C492.922,246.059,495.484,247.191,498.758,247.191 M498.758,253.82c-5.645,0-10.129-1.754-13.457-5.259c-3.324-3.503-4.988-8.241-4.988-14.218c0-6.094,1.664-10.926,4.988-14.496c3.328-3.59,7.812-5.383,13.457-5.383c5.676,0,10.172,1.793,13.48,5.383c3.328,3.57,4.988,8.402,4.988,14.496c0,5.977-1.66,10.715-4.988,14.218C508.93,252.066,504.434,253.82,498.758,253.82 M457.609,252.805v-30.699h-11.602v-6.625h31.223v6.625h-11.602v30.699H457.609 M441.438,238.738c0.016,5.332-1.195,9.184-3.633,11.551c-2.422,2.355-6.375,3.531-11.859,3.531c-5.262,0-9.164-1.227-11.707-3.684c-2.523-2.469-3.797-6.27-3.812-11.398V215.48h8.02v23.512c0,2.676,0.617,4.68,1.855,6.016c1.254,1.34,3.137,2.008,5.645,2.008c2.68,0,4.598-0.609,5.746-1.829c1.148-1.233,1.727-3.3,1.727-6.194V215.48h8.02V238.738 M386.234,252.805v-30.699h-11.602v-6.625h31.219v6.625h-11.598v30.699H386.234 M362.457,252.805V215.48h8.023v37.324H362.457 M338.684,252.805v-30.699h-11.602v-6.625h31.223v6.625h-11.602v30.699H338.684 M315.484,226.676c-0.14-1.777-0.941-3.18-2.406-4.215c-1.461-1.047-3.367-1.574-5.719-1.574c-2.039,0-3.632,0.441-4.781,1.32c-1.152,0.863-1.726,2.074-1.726,3.633c0,1.117,0.601,1.98,1.804,2.59c1.184,0.609,3.699,1.328,7.551,2.156c5.59,1.219,9.324,2.625,11.207,4.215c1.883,1.574,2.82,4.105,2.82,7.594c0,3.504-1.418,6.289-4.257,8.352c-2.84,2.051-6.68,3.074-11.52,3.074c-4.859,0-8.656-1.094-11.391-3.277c-2.738-2.184-4.199-5.289-4.39-9.316h7.734c0.086,1.98,0.824,3.504,2.219,4.57c1.394,1.066,3.336,1.598,5.828,1.598c2.559,0,4.555-0.395,5.981-1.191c1.445-0.812,2.167-1.93,2.167-3.352c0-1.406-0.511-2.438-1.539-3.098c-1.011-0.66-3.171-1.348-6.48-2.059c-6.098-1.32-10.172-2.75-12.227-4.289c-2.039-1.523-3.058-3.902-3.058-7.137c0-3.621,1.351-6.488,4.051-8.605c2.699-2.133,6.347-3.199,10.945-3.199c4.305,0,7.805,1.102,10.504,3.301c2.699,2.199,4.199,5.171,4.496,8.91H315.484 M263.102,252.805h-7.5V215.48h8.414l15.414,26.176V215.48h7.496v37.324h-7.992l-15.832-26.891V252.805 M240.5,252.805V215.48h8.023v37.324H240.5" />
+        <path fill="${subtitleColor}" d="M680.855,276.609l-5.094,15.008h10.215L680.855,276.609 M662.723,305.633l13.586-37.324h9.301l13.613,37.324h-8.52l-2.586-7.594h-14.578l-2.535,7.594H662.723 M659.59,292.555c-0.488,4.316-2.23,7.746-5.227,10.285c-2.977,2.539-6.773,3.809-11.391,3.809c-5.398,0-9.691-1.754-12.879-5.258c-3.172-3.504-4.758-8.242-4.758-14.219c0-6.094,1.586-10.926,4.758-14.496c3.188-3.59,7.48-5.383,12.879-5.383c4.562,0,8.344,1.199,11.34,3.605c2.996,2.387,4.754,5.629,5.277,9.723h-8.047c-0.262-2.012-1.16-3.613-2.691-4.797c-1.516-1.188-3.449-1.777-5.801-1.777c-2.977,0-5.312,1.16-7,3.477c-1.691,2.305-2.535,5.504-2.535,9.598c0,3.996,0.836,7.129,2.508,9.395c1.688,2.254,4.031,3.379,7.027,3.379c2.352,0,4.285-0.66,5.801-1.98c1.531-1.32,2.43-3.105,2.691-5.359H659.59 M611.57,305.633v-37.324h8.02v37.324H611.57 M587.793,305.633v-30.699h-11.598v-6.625h31.219v6.625h-11.598v30.699H587.793 M552.891,264.5l5.043-7.543h8.203l-7.84,7.543H552.891 M555.973,276.609l-5.094,15.008h10.215L555.973,276.609 M537.84,305.633l13.586-37.324h9.301l13.613,37.324h-8.516l-2.59-7.594h-14.578l-2.531,7.594H537.84 M503.328,305.633h-7.496v-37.324h11.754l7.004,29.578l6.898-29.578h11.598v37.324h-7.496V274.25l-7.188,31.383h-7.887l-7.188-32.071V305.633 M465.578,284.609h9.301c2.07,0,3.621-0.406,4.648-1.219c1.047-0.832,1.57-2.074,1.57-3.734c0-1.641-0.5-2.867-1.492-3.68c-0.973-0.832-2.445-1.246-4.414-1.246h-9.613V284.609 M457.555,305.633v-37.324h19.359c3.66,0,6.602,0.957,8.832,2.867c2.246,1.898,3.371,4.402,3.371,7.516c0,3.59-1.246,6.215-3.738,7.87c-0.66,0.442-1.41,0.813-2.246,1.118c0.473,0.188,0.898,0.391,1.281,0.609c2.195,1.27,3.336,3.402,3.422,6.397l0.184,6.122c0.035,1.219,0.164,2.082,0.391,2.59s0.664,0.913,1.309,1.219v0.988h-8.859c-0.207-0.387-0.391-1.219-0.547-2.488c-0.156-1.285-0.246-2.664-0.262-4.137L480,295.527c-0.035-1.676-0.551-2.871-1.543-3.582c-0.977-0.711-2.605-1.066-4.887-1.066h-7.992v14.754H457.555 M432.684,300.02c3.273,0,5.836-1.133,7.684-3.402c1.844-2.285,2.77-5.449,2.77-9.496c0-4.129-0.926-7.363-2.77-9.699c-1.848-2.336-4.41-3.504-7.684-3.504c-3.258,0-5.809,1.168-7.652,3.504c-1.848,2.336-2.77,5.57-2.77,9.699c0,4.047,0.914,7.211,2.742,9.496C426.852,298.887,429.41,300.02,432.684,300.02 M432.684,306.648c-5.641,0-10.129-1.754-13.453-5.258c-3.328-3.504-4.992-8.242-4.992-14.219c0-6.094,1.664-10.926,4.992-14.496c3.324-3.59,7.812-5.383,13.453-5.383c5.68,0,10.172,1.793,13.48,5.383c3.328,3.57,4.992,8.402,4.992,14.496c0,5.977-1.664,10.715-4.992,14.219C442.855,304.895,438.363,306.648,432.684,306.648 M383.254,305.633v-37.324h27.328v6.625h-19.309v8.48h16.828v6.426h-16.828v15.793H383.254 M351.695,305.633h-7.5v-37.324h8.415l15.414,26.176v-26.176h7.496v37.324h-7.992l-15.832-26.891V305.633 M329.094,305.633v-37.324h8.023v37.324H329.094 M279.168,305.633v-37.324h28.27v6.625h-20.25v7.922h18.785v6.527h-18.785v16.25H279.168 M267.129,292.852c0,3.945-0.781,6.867-2.336,8.781c-1.555,1.918-3.797,2.871-6.734,2.871c-2.918,0-5.148-0.953-6.684-2.871c-1.547-1.914-2.328-4.836-2.34-8.781v-11.758c0-3.949,0.793-6.867,2.371-8.758c1.582-1.895,3.805-2.84,6.652-2.84c2.863,0,5.086,0.945,6.684,2.84c1.586,1.891,2.387,4.809,2.387,8.758V292.852 M275.148,280.203c0-5.836-1.539-10.406-4.629-13.719c-3.086-3.309-7.23-4.961-12.422-4.961c-5.188,0-9.336,1.652-12.449,4.961c-3.109,3.313-4.664,7.883-4.664,13.719v13.539c0,5.816,1.555,10.375,4.664,13.68c3.113,3.313,7.262,4.965,12.449,4.965c5.191,0,9.336-1.652,12.422-4.965c3.09-3.305,4.629-7.863,4.629-13.68V280.203" />
+        <path fill="${subtitleColor}" d="M578.43,363.504c-0.137-1.891-0.938-3.387-2.398-4.492c-1.465-1.117-3.371-1.676-5.727-1.676c-2.039,0-3.629,0.473-4.773,1.406c-1.145,0.922-1.723,2.211-1.723,3.875c0,1.188,0.598,2.113,1.801,2.766c1.188,0.648,3.703,1.41,7.555,2.297c5.586,1.297,9.32,2.801,11.203,4.496c1.883,1.684,2.824,4.383,2.824,8.098c0,3.738-1.418,6.711-4.258,8.91c-2.836,2.188-6.68,3.285-11.52,3.285c-4.855,0-8.652-1.168-11.391-3.496c-2.738-2.336-4.199-5.648-4.387-9.941h7.734c0.086,2.113,0.824,3.742,2.215,4.879c1.398,1.137,3.34,1.703,5.828,1.703c2.562,0,4.559-0.422,5.98-1.27c1.445-0.863,2.168-2.062,2.168-3.578c0-1.5-0.512-2.598-1.539-3.305c-1.012-0.703-3.172-1.438-6.48-2.195c-6.102-1.41-10.176-2.934-12.23-4.57c-2.035-1.629-3.055-4.164-3.055-7.617c0-3.863,1.352-6.926,4.051-9.188c2.703-2.27,6.352-3.406,10.949-3.406c4.301,0,7.801,1.176,10.5,3.52c2.703,2.348,4.203,5.516,4.496,9.508H578.43 M519.824,360.598h14.574v22.785h-6.551v-16.16h-8.023V360.598 M537.484,368.527c0-5.773-1.562-10.297-4.688-13.566c-3.121-3.277-7.25-4.914-12.391-4.914c-5.289,0-9.488,1.672-12.602,5.016c-3.109,3.34-4.664,7.863-4.664,13.57v14.441c0,5.879,1.523,10.461,4.57,13.742c3.047,3.273,7.203,4.914,12.469,4.914c4.664,0,8.516-1.223,11.547-3.664c3.031-2.441,4.895-5.742,5.59-9.898h-8.074c-0.457,2.164-1.477,3.879-3.055,5.148c-1.578,1.266-3.59,1.902-6.035,1.902c-2.922,0-5.23-1.07-6.926-3.211c-1.691-2.148-2.547-5.281-2.566-9.398h26.824V368.527 M481.566,370.434h9.301c2.074,0,3.621-0.434,4.648-1.297c1.047-0.891,1.574-2.215,1.574-3.988c0-1.75-0.5-3.062-1.492-3.934c-0.977-0.887-2.445-1.328-4.414-1.328h-9.617V370.434 M473.543,392.883v-39.852h19.359c3.664,0,6.602,1.023,8.832,3.062c2.25,2.023,3.371,4.703,3.371,8.027c0,3.832-1.246,6.637-3.738,8.406c-0.66,0.473-1.41,0.867-2.246,1.191c0.473,0.203,0.898,0.418,1.281,0.652c2.195,1.355,3.336,3.633,3.422,6.832l0.184,6.539c0.035,1.301,0.164,2.223,0.391,2.766s0.664,0.977,1.309,1.301v1.055h-8.859c-0.207-0.414-0.391-1.301-0.547-2.656c-0.156-1.375-0.246-2.848-0.262-4.418l-0.477-7.668c-0.035-1.793-0.551-3.07-1.543-3.832c-0.977-0.758-2.605-1.137-4.887-1.137h-7.992v15.734H473.543 M445.895,359.852h18.238v6.809h-10.215v9.805h8.992v6.645h-8.992v16.773h-8.023V359.852 M416.711,377.742c0.016,5.695-1.195,9.809-3.633,12.336c-2.422,2.516-6.375,3.77-11.859,3.77c-5.262,0-9.164-1.312-11.707-3.934c-2.523-2.637-3.797-6.699-3.812-12.172v-24.707h8.02v25.105c0,2.859,0.617,5.004,1.855,6.434c1.254,1.43,3.137,2.145,5.645,2.145c2.68,0,4.598-0.648,5.746-1.953c1.148-1.316,1.727-3.523,1.727-6.617v-25.113h8.02V377.742" />
+        <path fill="${redColor}" d="M12.922,207.258L108.406,17.477L203.906,207.258L12.922,207.258z M108.406,62.836L52.883,173.23h111.047L108.406,62.836z" />
+        <path fill="${textColor}" d="M228.371,17.477h47.387v189.781h-47.387V17.477z" />
+        <path fill="${textColor}" d="M302.824,17.477h42.172l84.148,127.348V17.477h45.395v189.781h-40.48l-85.836-129.879v129.879h-45.398V17.477z" />
+        <path fill="${textColor}" d="M504.605,17.477h136.211v43.277H552.02v32.688h77.836v42.234H552.02v71.582h-47.414V17.477z" />
+      </svg>`;
+    }
+
+    function updateSlideUniversityLogo(themeKey) {
+      const el = document.getElementById('slide-university-logo');
+      if (el) {
+        const isDark = themeKey !== 'white' && themeKey !== 'paper';
+        el.innerHTML = UNIVERSITY_LOGO_SVG(isDark);
+      }
+    }
+
+    function svgStringToDataUrl(svgString, w, h) {
+      return new Promise((resolve) => {
+        const canvas = document.createElement('canvas');
+        canvas.width = w;
+        canvas.height = h;
+        const ctx = canvas.getContext('2d');
+        const img = new Image();
+        const svgBlob = new Blob([svgString], { type: 'image/svg+xml;charset=utf-8' });
+        const url = URL.createObjectURL(svgBlob);
+        img.onload = () => {
+          ctx.drawImage(img, 0, 0, w, h);
+          URL.revokeObjectURL(url);
+          resolve(canvas.toDataURL('image/png'));
+        };
+        img.onerror = () => {
+          URL.revokeObjectURL(url);
+          resolve('');
+        };
+        img.src = url;
+      });
+    }
+
     function setSlideTheme(themeKey) {
       const t = slideThemes[themeKey];
       const slide = document.getElementById('slide-container');
@@ -1411,6 +1460,7 @@
       b.style.color = t.badgeText;
       b.style.borderColor = t.badgeBorder;
       document.getElementById('slide-footer').style.color = t.footerText;
+      updateSlideUniversityLogo(themeKey);
     }
 
     // Google Slides Opener
@@ -1419,7 +1469,7 @@
     }
 
     // Master Presentation (.PPTX) Generator using PptxGenJS
-    function downloadMasterPptx() {
+    async function downloadMasterPptx() {
       if (typeof PptxGenJS === 'undefined') {
         alert('Presentation library initializing. Please ensure you are connected to the network or try again in a few seconds.');
         return;
@@ -1428,38 +1478,60 @@
       const pptx = new PptxGenJS();
       pptx.layout = 'LAYOUT_16x9';
       pptx.author = 'SEResearch Lab';
-      pptx.company = 'SEResearch Lab - Software Engineering Research Group';
+      pptx.company = 'SEResearch Lab - Instituto de Informática (UFRGS)';
       pptx.title = 'SEResearch Lab - Human and Social Aspects Keynote';
+
+      // Generate University Logo PNG for PPTX slides
+      const [univLogoDarkPng, univLogoLightPng] = await Promise.all([
+        svgStringToDataUrl(UNIVERSITY_LOGO_SVG(true), 700, 388),
+        svgStringToDataUrl(UNIVERSITY_LOGO_SVG(false), 700, 388),
+      ]);
 
       // Slide 1: Title Keynote (Midnight Navy)
       const slide1 = pptx.addSlide();
       slide1.background = { color: '071224' };
+
+      if (univLogoDarkPng) {
+        slide1.addImage({
+          data: univLogoDarkPng,
+          x: 10.1, y: 0.65, w: 2.2, h: 1.22
+        });
+      }
+
       slide1.addText('SERESEARCH LAB • KEYNOTE ADDRESS', {
         x: 0.8, y: 0.8, w: 8.0, h: 0.4,
         fontSize: 11, fontFace: 'Arial', color: 'F97316', bold: true
       });
       slide1.addText('Why Great Code Is Born From Empathy, Not Just Compilers', {
-        x: 0.8, y: 1.5, w: 10.5, h: 2.0,
+        x: 0.8, y: 1.5, w: 9.0, h: 2.0,
         fontSize: 34, fontFace: 'Arial', color: 'FFFFFF', bold: true
       });
       slide1.addText('Empirical findings on developer psychological safety, cognitive load, and collaborative resonance.', {
         x: 0.8, y: 3.8, w: 9.5, h: 1.0,
         fontSize: 14, fontFace: 'Arial', color: 'CBD5E1'
       });
-      slide1.addText('Prof. Dr. Alex Mercer, Director  •  seresearchlab.org', {
-        x: 0.8, y: 6.4, w: 10.0, h: 0.5,
+      slide1.addText('Prof. Dr. Alex Mercer, Director • Instituto de Informática (UFRGS)  •  seresearchlab.org', {
+        x: 0.8, y: 6.4, w: 11.5, h: 0.5,
         fontSize: 11, fontFace: 'Arial', color: '94A3B8'
       });
 
       // Slide 2: Research Pillars (Crisp Light)
       const slide2 = pptx.addSlide();
       slide2.background = { color: 'FFFFFF' };
+
+      if (univLogoLightPng) {
+        slide2.addImage({
+          data: univLogoLightPng,
+          x: 10.9, y: 0.52, w: 1.6, h: 0.89
+        });
+      }
+
       slide2.addText('RESEARCH PILLARS', {
         x: 0.8, y: 0.8, w: 6.0, h: 0.4,
         fontSize: 11, fontFace: 'Arial', color: 'EA580C', bold: true
       });
       slide2.addText('Socio-Technical Dynamics in Modern Software Teams', {
-        x: 0.8, y: 1.3, w: 11.0, h: 0.8,
+        x: 0.8, y: 1.3, w: 9.8, h: 0.8,
         fontSize: 26, fontFace: 'Arial', color: '0F172A', bold: true
       });
 
@@ -1489,12 +1561,20 @@
       // Slide 3: Empirical Metrics (Dark Slate Tech)
       const slide3 = pptx.addSlide();
       slide3.background = { color: '0F172A' };
+
+      if (univLogoDarkPng) {
+        slide3.addImage({
+          data: univLogoDarkPng,
+          x: 10.9, y: 0.52, w: 1.6, h: 0.89
+        });
+      }
+
       slide3.addText('EMPIRICAL BENCHMARKS', {
         x: 0.8, y: 0.8, w: 8.0, h: 0.4,
         fontSize: 11, fontFace: 'Arial', color: 'F97316', bold: true
       });
       slide3.addText('Laboratory Results Across 12,000+ Commits', {
-        x: 0.8, y: 1.3, w: 11.0, h: 0.8,
+        x: 0.8, y: 1.3, w: 9.8, h: 0.8,
         fontSize: 26, fontFace: 'Arial', color: 'FFFFFF', bold: true
       });
 
@@ -1520,6 +1600,49 @@
         });
       });
 
+      // Slide 4: Closing & Institutional Affiliation
+      const slide4 = pptx.addSlide();
+      slide4.background = { color: '071224' };
+      slide4.addText('COLLABORATION & COMMUNITY', {
+        x: 0.8, y: 0.8, w: 8.0, h: 0.4,
+        fontSize: 11, fontFace: 'Arial', color: 'F97316', bold: true
+      });
+      slide4.addText('Join Our Empirical Research Network', {
+        x: 0.8, y: 1.3, w: 11.0, h: 0.8,
+        fontSize: 26, fontFace: 'Arial', color: 'FFFFFF', bold: true
+      });
+
+      slide4.addText('SEResearch Lab investigates the socio-technical foundations of software engineering with global academic and open source partners.', {
+        x: 0.8, y: 2.3, w: 9.0, h: 1.0,
+        fontSize: 14, fontFace: 'Arial', color: 'CBD5E1', lineSpacingMultiple: 1.2
+      });
+
+      const affiliations = [
+        'Affiliation: Instituto de Informática — UFRGS (Universidade Federal do Rio Grande do Sul)',
+        'Website & Papers: https://seresearchlab.org • inf.ufrgs.br',
+        'Academic Collaboration: research@seresearchlab.org',
+        'Open Source Data: github.com/seresearch-lab'
+      ];
+
+      affiliations.forEach((text, i) => {
+        slide4.addText(`•  ${text}`, {
+          x: 0.8, y: 3.6 + (i * 0.55), w: 8.8, h: 0.45,
+          fontSize: 12.5, fontFace: 'Arial', color: 'FFFFFF', bold: i === 0
+        });
+      });
+
+      if (univLogoDarkPng) {
+        slide4.addImage({
+          data: univLogoDarkPng,
+          x: 10.0, y: 5.4, w: 2.3, h: 1.28
+        });
+      }
+
+      slide4.addText('Thank you! Questions & Discussion Welcomed.', {
+        x: 0.8, y: 6.2, w: 7.0, h: 0.5,
+        fontSize: 14, fontFace: 'Arial', color: 'F97316', bold: true
+      });
+
       pptx.writeFile({ fileName: 'SEResearch-Lab-Conference-Slides.pptx' });
     }
 
@@ -1541,6 +1664,10 @@
         });
       });
 
+      // Include institutional university logos in vector SVG format
+      folder.file('university-inf-ufrgs-logo.svg', UNIVERSITY_LOGO_SVG(false));
+      folder.file('university-inf-ufrgs-logo-dark.svg', UNIVERSITY_LOGO_SVG(true));
+
       zip.generateAsync({ type: 'blob' }).then(blob => {
         const url = URL.createObjectURL(blob);
         const link = document.createElement('a');
@@ -1554,6 +1681,7 @@
     // Initialize View
     renderLockup();
     renderAssetGrid();
+    updateSlideUniversityLogo('midnight');
   </script>
 </body>
 </html>
