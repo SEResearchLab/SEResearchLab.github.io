@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SEResearch Lab — Visual Identity & Brand Guidelines</title>
+  <meta name="description" content="Visual identity for SEResearch Lab exploring the human and social aspects of software engineering. Deep blue rigor and vibrant orange empathy." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-dark: #050C1A;
+      --card-dark: #0B1528;
+      --border-dark: #1E293B;
+      --text-white: #F8FAFC;
+      --text-muted: #94A3B8;
+      --text-body: #CBD5E1;
+      --orange-primary: #F97316;
+      --orange-warm: #FB923C;
+      --blue-midnight: #0B192C;
+      --blue-deep: #071224;
+      --font-display: 'Outfit', -apple-system, sans-serif;
+      --font-body: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-body);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      padding-bottom: 80px;
+    }
+
+    a { color: var(--orange-primary); text-decoration: none; }
+    h1, h2, h3, h4 { font-family: var(--font-display); color: var(--text-white); font-weight: 900; letter-spacing: -0.02em; }
+    .font-mono { font-family: var(--font-mono); }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header */
+    header {
+      background: rgba(5, 12, 26, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-dark);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+    .brand-mark {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .brand-title {
+      font-size: 20px;
+      color: var(--text-white);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .brand-tag {
+      font-size: 10px;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: rgba(249, 115, 22, 0.15);
+      color: var(--orange-primary);
+      border: 1px solid rgba(249, 115, 22, 0.3);
+    }
+    .brand-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    /* Hero Banner */
+    .hero-banner {
+      margin-top: 36px;
+      background: linear-gradient(135deg, #071326 0%, #0B192C 60%, #102444 100%);
+      border: 1px solid var(--border-dark);
+      border-radius: 24px;
+      padding: 48px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+    .hero-banner::after {
+      content: '';
+      position: absolute;
+      right: -50px;
+      bottom: -50px;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(249, 115, 22, 0.15) 0%, transparent 70%);
+      pointer-events-none;
+    }
+    .hero-title {
+      font-size: clamp(32px, 5vw, 48px);
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .hero-desc {
+      font-size: 16px;
+      max-width: 760px;
+      color: var(--text-body);
+      margin-bottom: 24px;
+    }
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 32px 0 24px;
+      border-bottom: 1px solid var(--border-dark);
+      padding-bottom: 12px;
+    }
+    .tab-btn {
+      background: var(--card-dark);
+      border: 1px solid var(--border-dark);
+      color: var(--text-muted);
+      padding: 10px 20px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 13px;
+      font-family: var(--font-body);
+      transition: all 0.2s;
+    }
+    .tab-btn:hover {
+      color: var(--text-white);
+      border-color: #334155;
+    }
+    .tab-btn.active {
+      background: var(--orange-primary);
+      color: #fff;
+      border-color: var(--orange-primary);
+      box-shadow: 0 4px 14px rgba(249, 115, 22, 0.35);
+    }
+
+    /* Section Cards */
+    .section-card {
+      background: var(--card-dark);
+      border: 1px solid var(--border-dark);
+      border-radius: 20px;
+      padding: 36px;
+      margin-bottom: 32px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
+    .section-header {
+      margin-bottom: 28px;
+    }
+    .section-header h3 {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+    .section-header p {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    /* Symbolism 3-grid */
+    .symbolism-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 24px;
+    }
+    .symbol-box {
+      background: #050C1A;
+      border: 1px solid var(--border-dark);
+      border-radius: 16px;
+      padding: 24px;
+    }
+    .symbol-box h4 {
+      font-size: 16px;
+      color: var(--text-white);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .symbol-pill {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    /* Interactive Lockup Canvas */
+    .canvas-preview-wrap {
+      background: #050C1A;
+      border: 1px solid var(--border-dark);
+      border-radius: 20px;
+      padding: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 280px;
+      margin-bottom: 20px;
+      transition: background 0.3s;
+    }
+
+    /* Slide 16:9 Showcase */
+    .slide-aspect {
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      border-radius: 16px;
+      padding: 36px 44px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      border: 1px solid rgba(249, 115, 22, 0.25);
+      transition: all 0.3s;
+    }
+    .slide-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      margin-top: 20px;
+    }
+
+    /* Asset Grid */
+    .asset-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+    .asset-card {
+      background: #050C1A;
+      border: 1px solid var(--border-dark);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .asset-card-header {
+      padding: 16px;
+      border-bottom: 1px solid var(--border-dark);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .asset-canvas {
+      padding: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 180px;
+    }
+    .asset-card-footer {
+      padding: 14px 16px;
+      background: #08101E;
+      border-top: 1px solid var(--border-dark);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 12px;
+      padding: 8px 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+    }
+    .btn-primary {
+      background: var(--orange-primary);
+      color: #fff;
+    }
+    .btn-primary:hover {
+      background: #ea580c;
+    }
+    .btn-secondary {
+      background: #0B1528;
+      color: var(--text-body);
+      border: 1px solid var(--border-dark);
+    }
+    .btn-secondary:hover {
+      color: #fff;
+      border-color: #475569;
+    }
+
+    /* Controls bar */
+    .controls-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .pill-group {
+      display: flex;
+      background: #050C1A;
+      border: 1px solid var(--border-dark);
+      padding: 4px;
+      border-radius: 12px;
+      gap: 4px;
+    }
+    .pill-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .pill-btn.active {
+      background: var(--orange-primary);
+      color: #fff;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 60px;
+      border-top: 1px solid var(--border-dark);
+      padding: 32px 0;
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 768px) {
+      .hero-banner { padding: 24px; }
+      .section-card { padding: 20px; }
+      .canvas-preview-wrap { padding: 24px; }
+    }
+  </style>
+<script src="/_aistudio-iframe.js?v=2f1c016a"></script></head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-inner">
+      <div class="brand-mark">
+        <svg width="34" height="34" viewBox="0 0 200 200" fill="none">
+          <path d="M 52 70 L 25 100 L 52 130" stroke="#1E3E62" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M 148 70 L 175 100 L 148 130" stroke="#1E3E62" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M 38 100 L 70 100 L 82 72 L 95 132 L 110 88 L 120 114 L 130 100 L 162 100" stroke="#F97316" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" />
+          <circle cx="95" cy="56" r="9" fill="#FB923C" />
+          <circle cx="95" cy="56" r="4" fill="#FFFFFF" />
+          <circle cx="110" cy="74" r="6" fill="#F97316" />
+        </svg>
+        <div>
+          <h1 class="brand-title">
+            SEResearch Lab
+            <span class="brand-tag">Visual Identity</span>
+          </h1>
+          <p class="brand-sub">Human & Social Aspects of Software Engineering</p>
+        </div>
+      </div>
+      <div>
+        <a href="#assets" class="btn btn-primary">Download Assets</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Hero Banner -->
+    <div class="hero-banner">
+      <h2 class="hero-title">A Visual Identity for SEResearch Lab</h2>
+      <p class="hero-desc">
+        Exploring the human and social aspects of software engineering with deep blue architectural rigor and warm radiant orange empathy.
+      </p>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+        <span class="brand-tag" style="background: rgba(11, 25, 44, 0.8); color: #93C5FD; border-color: #1E3E62;">Deep Blue: Software Architecture & Logic</span>
+        <span class="brand-tag" style="background: rgba(249, 115, 22, 0.15); color: #FB923C; border-color: rgba(249, 115, 22, 0.4);">Radiant Orange: Human Vitality & Social Empathy</span>
+      </div>
+    </div>
+
+    <!-- Mark Anatomy & Symbolism -->
+    <section class="section-card" style="margin-top: 36px;">
+      <div class="section-header">
+        <h3>Option 04 — The Human Logic & Pulse Wave</h3>
+        <p>The core geometry balances technical engineering syntax with the living heartbeat of software creators.</p>
+      </div>
+
+      <div style="display: flex; flex-direction: column; align-items: center; margin: 24px 0;">
+        <div style="background: #030812; border: 1px solid var(--border-dark); border-radius: 20px; padding: 32px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+          <svg id="hero-pulse-svg" width="220" height="220" viewBox="0 0 200 200" fill="none">
+            <defs>
+              <linearGradient id="main-pulse-grad" x1="38" y1="100" x2="162" y2="100" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#F97316" />
+                <stop offset="50%" stop-color="#FB923C" />
+                <stop offset="100%" stop-color="#F97316" />
+              </linearGradient>
+            </defs>
+            <!-- Left Bracket < -->
+            <path d="M 52 70 L 25 100 L 52 130" stroke="#1E3E62" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" />
+            <!-- Right Bracket > -->
+            <path d="M 148 70 L 175 100 L 148 130" stroke="#1E3E62" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" />
+            <!-- Pulse Wave -->
+            <path d="M 38 100 L 70 100 L 82 72 L 95 132 L 110 88 L 120 114 L 130 100 L 162 100" stroke="url(#main-pulse-grad)" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round" />
+            <!-- Empathy Peak -->
+            <circle cx="95" cy="56" r="9" fill="#FB923C" />
+            <circle cx="95" cy="56" r="4" fill="#FFFFFF" />
+            <!-- Social Connection Node -->
+            <circle cx="110" cy="74" r="6" fill="#F97316" />
+          </svg>
+        </div>
+      </div>
+
+      <div class="symbolism-grid">
+        <div class="symbol-box">
+          <h4><span class="symbol-pill" style="background: #1E3E62;"></span> 1. Code Brackets &lt; &gt;</h4>
+          <p style="font-size: 13px; color: var(--text-muted);">
+            Deep blue terminal brackets anchor the identity in software engineering discipline, compiler science, algorithms, and technical rigor.
+          </p>
+        </div>
+        <div class="symbol-box">
+          <h4><span class="symbol-pill" style="background: #F97316;"></span> 2. Vitality Pulse Wave</h4>
+          <p style="font-size: 13px; color: var(--text-muted);">
+            The warm radiant pulse wave flows through the code, symbolizing human cognitive flow, developer fatigue prevention, and emotional well-being.
+          </p>
+        </div>
+        <div class="symbol-box">
+          <h4><span class="symbol-pill" style="background: #FB923C;"></span> 3. Collaborative Apex</h4>
+          <p style="font-size: 13px; color: var(--text-muted);">
+            Empathy nodes positioned on the peak of the pulse capture psychological safety, code review empathy, and team collaboration.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Lockup Studio -->
+    <section class="section-card">
+      <div class="section-header">
+        <h3>Identity Lockup Variants & Canvas Themes</h3>
+        <p>Preview the mark in horizontal, stacked, circular crest, and icon formats across multiple background canvases.</p>
+      </div>
+
+      <div class="controls-row">
+        <div>
+          <span style="font-size: 11px; font-family: var(--font-mono); color: var(--text-muted); text-transform: uppercase; font-weight: 700; margin-right: 8px;">Lockup:</span>
+          <div class="pill-group" style="display: inline-flex;">
+            <button class="pill-btn active" onclick="setLockup('horizontal')">Horizontal</button>
+            <button class="pill-btn" onclick="setLockup('stacked')">Stacked</button>
+            <button class="pill-btn" onclick="setLockup('badge')">Academic Crest</button>
+            <button class="pill-btn" onclick="setLockup('icon')">Mark Only</button>
+          </div>
+        </div>
+
+        <div>
+          <span style="font-size: 11px; font-family: var(--font-mono); color: var(--text-muted); text-transform: uppercase; font-weight: 700; margin-right: 8px;">Background:</span>
+          <div class="pill-group" style="display: inline-flex;">
+            <button class="pill-btn active" onclick="setCanvasBg('#050C1A', false)">Midnight</button>
+            <button class="pill-btn" onclick="setCanvasBg('#0F172A', false)">Slate</button>
+            <button class="pill-btn" onclick="setCanvasBg('#FFFFFF', true)">Clean Light</button>
+            <button class="pill-btn" onclick="setCanvasBg('#FAF8F5', true)">Warm Paper</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Preview Stage -->
+      <div class="canvas-preview-wrap" id="lockup-stage">
+        <div id="lockup-content">
+          <!-- Dynamically updated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Conference Presentation Slides Mockup -->
+    <section class="section-card">
+      <div class="section-header">
+        <h3>Conference Presentation Slides (16:9)</h3>
+        <p>Explore the lab's keynote slides optimized for high-lumen projectors, dark auditoriums, and academic lectures.</p>
+      </div>
+
+      <div class="controls-row">
+        <span style="font-size: 11px; font-family: var(--font-mono); color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Slide Backgrounds:</span>
+        <div class="pill-group">
+          <button class="pill-btn active" onclick="setSlideTheme('midnight')">Midnight Navy</button>
+          <button class="pill-btn" onclick="setSlideTheme('white')">Crisp Light</button>
+          <button class="pill-btn" onclick="setSlideTheme('slate')">Dark Slate</button>
+          <button class="pill-btn" onclick="setSlideTheme('paper')">Editorial Paper</button>
+          <button class="pill-btn" onclick="setSlideTheme('solar')">Solar Amber</button>
+        </div>
+      </div>
+
+      <!-- Slide Render -->
+      <div id="slide-container" class="slide-aspect" style="background: #071224;">
+        <div style="display: flex; justify-content: space-between; align-items: center; z-index: 2;">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <svg width="42" height="42" viewBox="0 0 200 200" fill="none">
+              <path d="M 52 70 L 25 100 L 52 130" stroke="#1E3E62" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M 148 70 L 175 100 L 148 130" stroke="#1E3E62" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M 38 100 L 70 100 L 82 72 L 95 132 L 110 88 L 120 114 L 130 100 L 162 100" stroke="#F97316" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round" />
+              <circle cx="95" cy="56" r="9" fill="#FB923C" />
+              <circle cx="95" cy="56" r="4" fill="#FFFFFF" />
+              <circle cx="110" cy="74" r="6" fill="#F97316" />
+            </svg>
+            <span id="slide-brand-text" style="font-size: 18px; font-weight: 900; font-family: var(--font-display); color: #fff;">SEResearch Lab</span>
+          </div>
+          <span id="slide-badge" style="font-size: 11px; font-family: var(--font-mono); font-weight: 700; padding: 4px 12px; border-radius: 999px; background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.15);">
+            ICSE 2026 Keynote Address
+          </span>
+        </div>
+
+        <div style="margin: 28px 0; z-index: 2;">
+          <span id="slide-topic" style="font-size: 12px; font-family: var(--font-mono); font-weight: 900; color: #F97316; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 8px;">
+            Human & Social Aspects • Socio-Technical Dynamics
+          </span>
+          <h2 id="slide-heading" style="font-size: clamp(22px, 3.5vw, 36px); line-height: 1.2; margin-bottom: 12px;">
+            Why Great Code Is Born From Empathy, Not Just Compilers
+          </h2>
+          <p id="slide-desc" style="font-size: 14px; color: #CBD5E1; max-width: 600px;">
+            Unpacking 5 years of laboratory empirical findings on developer cognitive load, psychological safety, and team collaboration.
+          </p>
+        </div>
+
+        <div id="slide-footer" style="display: flex; justify-content: space-between; font-size: 12px; color: #94A3B8; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 14px; font-weight: 700; z-index: 2;">
+          <span>Prof. Dr. Alex Mercer, Director</span>
+          <span style="font-family: var(--font-mono); color: #fff;">seresearchlab.org</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Color Nuances Asset Generator -->
+    <section id="assets" class="section-card">
+      <div class="section-header">
+        <h3>Asset Download Hub — All Suggested Color Nuances</h3>
+        <p>Download production-ready vector SVGs and ultra high-res PNGs for publications, websites, and presentations.</p>
+      </div>
+
+      <div class="asset-grid" id="asset-grid-container">
+        <!-- Rendered by JS below -->
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: gap; gap: 16px;">
+      <div>
+        <strong style="color: #fff;">SEResearch Lab</strong> — Human & Social Aspects of Software Engineering
+      </div>
+      <div>
+        Deep Blue & Radiant Orange Nuances • Option 04 Identity
+      </div>
+    </div>
+  </footer>
+
+  <!-- Interactive JavaScript -->
+  <script>
+    const SVG_TEMPLATE = (bracketColor, pulseColor, headColor, size = 120) => `
+      <svg width="${size}" height="${size}" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 52 70 L 25 100 L 52 130" stroke="${bracketColor}" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M 148 70 L 175 100 L 148 130" stroke="${bracketColor}" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M 38 100 L 70 100 L 82 72 L 95 132 L 110 88 L 120 114 L 130 100 L 162 100" stroke="${pulseColor}" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round" />
+        <circle cx="95" cy="56" r="9" fill="${headColor}" />
+        <circle cx="95" cy="56" r="4" fill="#FFFFFF" />
+        <circle cx="110" cy="74" r="6" fill="${pulseColor}" />
+      </svg>
+    `;
+
+    let currentLockup = 'horizontal';
+    let currentCanvasBg = '#050C1A';
+    let isLightMode = false;
+
+    function renderLockup() {
+      const stage = document.getElementById('lockup-content');
+      const bracket = isLightMode ? '#0B192C' : '#1E3E62';
+      const textClass = isLightMode ? '#0F172A' : '#FFFFFF';
+      const subClass = isLightMode ? '#475569' : '#CBD5E1';
+
+      if (currentLockup === 'horizontal') {
+        stage.innerHTML = `
+          <div style="display: flex; align-items: center; gap: 20px;">
+            ${SVG_TEMPLATE(bracket, '#F97316', '#FB923C', 110)}
+            <div>
+              <div style="font-size: 32px; font-weight: 900; font-family: var(--font-display); color: ${textClass}; letter-spacing: -0.02em;">
+                <span style="color: #F97316;">SEResearch</span> Lab
+              </div>
+              <div style="font-size: 13px; font-weight: 700; color: ${subClass};">
+                Human & Social Aspects of Software Engineering
+              </div>
+            </div>
+          </div>
+        `;
+      } else if (currentLockup === 'stacked') {
+        stage.innerHTML = `
+          <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px;">
+            ${SVG_TEMPLATE(bracket, '#F97316', '#FB923C', 130)}
+            <div>
+              <div style="font-size: 34px; font-weight: 900; font-family: var(--font-display); color: ${textClass};">
+                <span style="color: #F97316;">SEResearch</span> Lab
+              </div>
+              <div style="font-size: 13px; font-weight: 700; color: ${subClass}; max-width: 400px;">
+                Human & Social Aspects of Software Engineering
+              </div>
+            </div>
+          </div>
+        `;
+      } else if (currentLockup === 'badge') {
+        stage.innerHTML = `
+          <div style="width: 220px; height: 220px; border-radius: 50%; border: 2px solid #F97316; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 16px; text-align: center; background: ${isLightMode ? '#fff' : '#030812'}; box-shadow: 0 10px 25px rgba(0,0,0,0.3);">
+            ${SVG_TEMPLATE(bracket, '#F97316', '#FB923C', 85)}
+            <div style="font-size: 12px; font-weight: 900; color: ${textClass}; font-family: var(--font-display); margin-top: 6px;">SERESEARCH LAB</div>
+            <div style="font-size: 8px; font-family: var(--font-mono); font-weight: 700; color: #F97316; letter-spacing: 0.1em;">• HUMAN & SOCIAL ASPECTS •</div>
+          </div>
+        `;
+      } else {
+        stage.innerHTML = SVG_TEMPLATE(bracket, '#F97316', '#FB923C', 160);
+      }
+    }
+
+    function setLockup(mode) {
+      currentLockup = mode;
+      document.querySelectorAll('.pill-group button').forEach(b => {
+        if (b.innerText.toLowerCase().includes(mode.toLowerCase())) {
+          b.parentElement.querySelectorAll('button').forEach(x => x.classList.remove('active'));
+          b.classList.add('active');
+        }
+      });
+      renderLockup();
+    }
+
+    function setCanvasBg(color, light) {
+      currentCanvasBg = color;
+      isLightMode = light;
+      document.getElementById('lockup-stage').style.backgroundColor = color;
+      renderLockup();
+    }
+
+    // Slide Theme Switcher
+    const slideThemes = {
+      midnight: {
+        bg: '#071224',
+        text: '#fff',
+        desc: '#CBD5E1',
+        topic: '#F97316',
+        badgeBg: 'rgba(255,255,255,0.1)',
+        badgeText: '#fff',
+        badgeBorder: 'rgba(255,255,255,0.2)',
+        footerText: '#94A3B8'
+      },
+      white: {
+        bg: '#FFFFFF',
+        text: '#0F172A',
+        desc: '#475569',
+        topic: '#EA580C',
+        badgeBg: '#F1F5F9',
+        badgeText: '#0F172A',
+        badgeBorder: '#CBD5E1',
+        footerText: '#64748B'
+      },
+      slate: {
+        bg: '#0F172A',
+        text: '#FFFFFF',
+        desc: '#CBD5E1',
+        topic: '#F97316',
+        badgeBg: '#1E293B',
+        badgeText: '#E2E8F0',
+        badgeBorder: '#334155',
+        footerText: '#94A3B8'
+      },
+      paper: {
+        bg: '#FAF8F5',
+        text: '#1C1917',
+        desc: '#57534E',
+        topic: '#D97706',
+        badgeBg: '#F5F5F4',
+        badgeText: '#292524',
+        badgeBorder: '#D6D3D1',
+        footerText: '#78716C'
+      },
+      solar: {
+        bg: 'linear-gradient(135deg, #1C0A00 0%, #2E1204 100%)',
+        text: '#FFFFFF',
+        desc: '#FFEDD5',
+        topic: '#FB923C',
+        badgeBg: 'rgba(249, 115, 22, 0.2)',
+        badgeText: '#FED7AA',
+        badgeBorder: 'rgba(249, 115, 22, 0.4)',
+        footerText: '#FDBA74'
+      }
+    };
+
+    function setSlideTheme(themeKey) {
+      const t = slideThemes[themeKey];
+      const slide = document.getElementById('slide-container');
+      slide.style.background = t.bg;
+      document.getElementById('slide-heading').style.color = t.text;
+      document.getElementById('slide-brand-text').style.color = t.text;
+      document.getElementById('slide-desc').style.color = t.desc;
+      document.getElementById('slide-topic').style.color = t.topic;
+      const b = document.getElementById('slide-badge');
+      b.style.backgroundColor = t.badgeBg;
+      b.style.color = t.badgeText;
+      b.style.borderColor = t.badgeBorder;
+      document.getElementById('slide-footer').style.color = t.footerText;
+    }
+
+    // Asset Cards Generator
+    const ASSET_VARIANTS = [
+      { id: 'classic-dark', name: 'Classic Identity (Dark)', blue: '#1E3E62', orange: '#F97316', warm: '#FB923C', bg: '#050C1A', light: false },
+      { id: 'classic-light', name: 'Classic Identity (Light)', blue: '#0B192C', orange: '#F97316', warm: '#FB923C', bg: '#FFFFFF', light: true },
+      { id: 'solar-rigor', name: 'Solar Rigor (Oceanic)', blue: '#0F2537', orange: '#EA580C', warm: '#F97316', bg: '#040913', light: false },
+      { id: 'cyber-humanist', name: 'Cyber Humanist (Cobalt)', blue: '#203254', orange: '#FF6B35', warm: '#FFA07A', bg: '#0A0F1F', light: false },
+      { id: 'nordic-empathy', name: 'Nordic Empathy (Paper)', blue: '#1F2937', orange: '#F59E0B', warm: '#FBBF24', bg: '#FAF8F5', light: true },
+      { id: 'monochrome-navy', name: 'Monochrome Midnight', blue: '#0B192C', orange: '#0B192C', warm: '#1E3E62', bg: '#FFFFFF', light: true },
+      { id: 'stencil-white', name: 'Monochrome Stencil', blue: '#CBD5E1', orange: '#FFFFFF', warm: '#E2E8F0', bg: '#050C1A', light: false }
+    ];
+
+    function renderAssetGrid() {
+      const container = document.getElementById('asset-grid-container');
+      container.innerHTML = ASSET_VARIANTS.map(a => `
+        <div class="asset-card">
+          <div class="asset-card-header">
+            <span style="font-weight: 800; font-size: 13px; color: #fff;">${a.name}</span>
+            <div style="display: flex; gap: 4px;">
+              <span style="width: 12px; height: 12px; border-radius: 50%; background: ${a.blue}; border: 1px solid rgba(255,255,255,0.2);"></span>
+              <span style="width: 12px; height: 12px; border-radius: 50%; background: ${a.orange}; border: 1px solid rgba(255,255,255,0.2);"></span>
+            </div>
+          </div>
+          <div class="asset-canvas" style="background-color: ${a.bg};" id="canvas-${a.id}">
+            ${SVG_TEMPLATE(a.blue, a.orange, a.warm, 100)}
+          </div>
+          <div class="asset-card-footer">
+            <span style="font-size: 11px; font-family: var(--font-mono); color: #94A3B8;">Option 04 Vector</span>
+            <div style="display: flex; gap: 8px;">
+              <button class="btn btn-secondary" onclick="downloadAssetSvg('${a.id}', '${a.blue}', '${a.orange}', '${a.warm}')">SVG</button>
+              <button class="btn btn-primary" onclick="downloadAssetPng('${a.id}', '${a.bg}')">PNG (2K)</button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function downloadAssetSvg(id, blue, orange, warm) {
+      const svg = SVG_TEMPLATE(blue, orange, warm, 400);
+      const blob = new Blob([svg], { type: 'image/svg+xml;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `seresearch-lab-${id}.svg`;
+      link.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function downloadAssetPng(id, bgColor) {
+      const cardCanvas = document.getElementById(`canvas-${id}`);
+      const svgEl = cardCanvas.querySelector('svg');
+      const serializer = new XMLSerializer();
+      const svgStr = serializer.serializeToString(svgEl);
+
+      const canvas = document.createElement('canvas');
+      canvas.width = 2048;
+      canvas.height = 2048;
+      const ctx = canvas.getContext('2d');
+
+      ctx.fillStyle = bgColor;
+      ctx.fillRect(0, 0, 2048, 2048);
+
+      const img = new Image();
+      const svgBlob = new Blob([svgStr], { type: 'image/svg+xml;charset=utf-8' });
+      const url = URL.createObjectURL(svgBlob);
+
+      img.onload = () => {
+        ctx.drawImage(img, 256, 256, 1536, 1536);
+        URL.revokeObjectURL(url);
+        const pngUrl = canvas.toDataURL('image/png');
+        const link = document.createElement('a');
+        link.download = `seresearch-lab-${id}-2048px.png`;
+        link.href = pngUrl;
+        link.click();
+      };
+      img.src = url;
+    }
+
+    // Initialize
+    renderLockup();
+    renderAssetGrid();
+  </script>
+</body>
+</html>

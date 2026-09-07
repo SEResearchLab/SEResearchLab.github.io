@@ -1,0 +1,6 @@
+{
+  "name": "SEResearch Lab - Visual Identity & Brand System",
+  "description": "Visual identity and logo design suite for SEResearch Lab, exploring the human and social aspects of software engineering with Option 04 Human Logic & Pulse Wave, multi-canvas conference slides, and standalone publication exports.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
