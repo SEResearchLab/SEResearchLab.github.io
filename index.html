@@ -464,9 +464,7 @@
       height: 100%;
       border-radius: 21px;
       background: #F1F5F9;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: block;
       font-family: var(--font-display);
       font-size: 1.8rem;
       font-weight: 900;
@@ -742,7 +740,7 @@
           </div>
           <div>
             <div class="brand-title">
-              <span>SEResearch Lab</span>
+              <span><strong style="color: #F97316;">SEResearch</strong> Lab</span>
               <span class="brand-pill">UFRGS</span>
             </div>
           </div>
@@ -779,9 +777,19 @@
         <span style="color: #CBD5E1;">•</span>
         <span>Software Engineering Research Lab</span>
       </div>
+      <div> 
 
-      <h1 class="hero-h1">SEResearch Lab</h1>
-      <h2 class="hero-h2">Human & Social Dimensions of Software Engineering</h2>
+            <svg width="130" height="130" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 52 70 L 25 100 L 52 130" stroke="#0B192C" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M 148 70 L 175 100 L 148 130" stroke="#0B192C" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M 38 100 L 70 100 L 82 72 L 95 132 L 110 88 L 120 114 L 130 100 L 162 100" stroke="#F97316" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="95" cy="56" r="9" fill="#FB923C"/>
+            <circle cx="95" cy="56" r="4" fill="#FFFFFF"/>
+            <circle cx="110" cy="74" r="6" fill="#F97316"/>
+          </svg>
+       </div>     
+      <h1 class="hero-h1"><span style="color: #F97316;">SEResearch</span> Lab</h1>
+      <h2 class="hero-h2">Human & Social Aspects of Software Engineering</h2>
       <p class="hero-p">
         Developer experience, human-AI collaboration, neurodiversity, and the socio-technical future of development.
       </p>
@@ -789,18 +797,16 @@
       <div class="hero-actions">
         <a href="#projetos" class="btn btn-primary">Projects →</a>
         <a href="#publicacoes" class="btn btn-secondary">Publications</a>
-        <a href="#brand-assets" class="btn btn-orange">🎨 Brand Assets & Kit</a>
+        <!-- <a href="#brand-assets" class="btn btn-orange">🎨 Brand Assets & Kit</a> -->
       </div>
 
       <!-- Topic Badges -->
       <div class="hero-pills-row">
+        <span class="topic-pill">📊 Empirical SE</span>
         <span class="topic-pill">💻 Developer Experience (DevEx)</span>
         <span class="topic-pill">✨ Human-AI Collaboration</span>
-        <span class="topic-pill">🧠 ADHD & Neurodiversity</span>
-        <span class="topic-pill">🤝 Team Dynamics & Empathy</span>
-        <span class="topic-pill">📊 Empirical SE</span>
-        <span class="topic-pill">🧪 Code Review Sentiment</span>
-        <span class="topic-pill">📘 Accessibility in Tech</span>
+    
+        <span class="topic-pill">🤝 Socio-Technical Flow</span>
       </div>
     </section>
 
@@ -851,7 +857,7 @@
 
         <div class="coord-card">
           <div class="coord-avatar-wrap">
-            <div class="coord-avatar">KK</div>
+            <img class="coord-avatar" src="assets/karinasq.jpg" alt="Profa. Dra. Karina Kohl">
           </div>
           <div>
             <h3 style="font-size: 1.4rem; font-weight: 800; color: var(--color-deep-blue); margin-bottom: 4px;">
@@ -867,7 +873,7 @@
               <a href="https://karinakohl.github.io" target="_blank" rel="noreferrer" class="btn btn-secondary" style="padding: 0.4rem 1rem; font-size: 0.8rem;">
                 Personal Page ↗
               </a>
-              <a href="mailto:seresearch@inf.ufrgs.br" class="btn btn-secondary" style="padding: 0.4rem 1rem; font-size: 0.8rem;">
+              <a href="mailto:karina.kohl@inf.ufrgs.br" class="btn btn-secondary" style="padding: 0.4rem 1rem; font-size: 0.8rem;">
                 Email Contact
               </a>
             </div>
@@ -1240,13 +1246,13 @@
     </section>
 
     <!-- Brand Assets & Media Kit Section (Clear Background & Highlighting Brand Colors) -->
-    <section id="brand-assets">
+    <!-- <section id="brand-assets">
       <div class="section-header">
         <span class="section-dot"></span>
         <h2 class="section-title">Brand Assets & Identity System</h2>
-      </div>
+      </div> -->
 
-      <div class="brand-section-box">
+      <!-- <div class="brand-section-box">
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
           <div>
             <h3 style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; color: var(--color-deep-blue);">
@@ -1256,13 +1262,42 @@
               Designed specifically for high clarity on white and clear backgrounds, with deep blue engineering brackets and radiant orange empathy.
             </p>
           </div>
-          <a href="/lab_brand.html" target="_blank" class="btn btn-orange" style="padding: 0.6rem 1.4rem; font-size: 0.85rem;">
+          <a href="/standalone.html" target="_blank" class="btn btn-orange" style="padding: 0.6rem 1.4rem; font-size: 0.85rem;">
             Full Brand Kit & PPTX Deck ↗
           </a>
         </div>
 
+        <!-- Stacked Lockup Featured Card on Clean White -->
+        <!-- <div style="margin-top: 1.5rem; background: #FFFFFF; border: 2px solid #FED7AA; border-radius: 20px; padding: 2rem; text-align: center; box-shadow: 0 4px 16px rgba(249, 115, 22, 0.08); display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+          <span style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: #EA580C; background: #FFF7ED; padding: 3px 10px; border-radius: 999px; border: 1px solid #FFEDD5;">
+            Featured Lockup • Clean White Canvas
+          </span>
+          <svg width="180" height="130" viewBox="0 0 600 420" fill="none">
+            <g transform="translate(200, 30)">
+              <path d="M 52 70 L 25 100 L 52 130" stroke="#0B192C" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M 148 70 L 175 100 L 148 130" stroke="#0B192C" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M 38 100 L 70 100 L 82 72 L 95 132 L 110 88 L 120 114 L 130 100 L 162 100" stroke="#F97316" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round" />
+              <circle cx="95" cy="56" r="9" fill="#FB923C" />
+              <circle cx="95" cy="56" r="4" fill="#FFFFFF" />
+              <circle cx="110" cy="74" r="6" fill="#F97316" />
+            </g>
+            <g transform="translate(300, 290)" text-anchor="middle">
+              <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Outfit', 'Segoe UI', Roboto, sans-serif" font-size="52" font-weight="900" letter-spacing="-0.03em">
+                <tspan fill="#F97316">SEResearch</tspan>
+                <tspan fill="#0B192C"> Lab</tspan>
+              </text>
+              <text x="0" y="42" font-family="-apple-system, BlinkMacSystemFont, 'Plus Jakarta Sans', 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="700" fill="#1E3E62" letter-spacing="0.02em">
+                Human &amp; Social Aspects of Software Engineering
+              </text>
+            </g>
+          </svg>
+          <p style="font-size: 0.85rem; color: var(--text-muted); max-width: 480px; margin: 0;">
+            Stacked Lockup with <strong style="color: #F97316;">SEResearch in Radiant Orange</strong> (#F97316) and <strong style="color: #0B192C;">Lab in Deep Midnight</strong> (#0B192C).
+          </p>
+        </div> -->
+
         <!-- Color Tokens -->
-        <div class="swatches-grid">
+        <!-- <div class="swatches-grid">
           <div class="swatch-card">
             <span class="swatch-dot" style="background: #0B192C;"></span>
             <div>
@@ -1294,22 +1329,22 @@
               <code style="font-size: 0.72rem; color: var(--color-accent-dark-orange);">#FB923C</code>
             </div>
           </div>
-        </div>
+        </div> -->
 
         <!-- Download Buttons -->
-        <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; border-top: 1px solid #FED7AA; padding-top: 1.5rem;">
-          <a href="/lab_brand.html" class="btn btn-secondary" style="font-size: 0.85rem;">
+        <!-- <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; border-top: 1px solid #FED7AA; padding-top: 1.5rem;">
+          <a href="/standalone.html" class="btn btn-secondary" style="font-size: 0.85rem;">
             📥 Download Vector SVG Logo
           </a>
-          <a href="/lab_brand.html" class="btn btn-secondary" style="font-size: 0.85rem;">
+          <a href="/standalone.html" class="btn btn-secondary" style="font-size: 0.85rem;">
             📊 16:9 Slide Presentation (.PPTX)
           </a>
-          <a href="/lab_brand.html" class="btn btn-secondary" style="font-size: 0.85rem;">
+          <a href="/standalone.html" class="btn btn-secondary" style="font-size: 0.85rem;">
             📦 Complete Brand Kit (ZIP)
           </a>
-        </div>
+        </div> 
       </div>
-    </section>
+    </section>-->
 
     <!-- Alumni Section -->
     <section id="alumni">
@@ -1380,7 +1415,7 @@
         <div style="display: flex; gap: 1.2rem; align-items: center;">
           <a href="#inicio" style="color: #94A3B8;">Home</a>
           <a href="#publicacoes" style="color: #94A3B8;">Publications</a>
-          <a href="#brand-assets" style="color: var(--color-accent-orange); font-weight: 700;">Brand Assets</a>
+          <!-- <a href="#brand-assets" style="color: var(--color-accent-orange); font-weight: 700;">Brand Assets</a> -->
           <a href="https://inf.ufrgs.br" target="_blank" rel="noreferrer" style="color: #94A3B8;">INF UFRGS</a>
         </div>
       </div>
