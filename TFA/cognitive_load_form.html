@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Questionário de carga cognitiva</title>
+<style>
+  :root { --accent:#5B8DB8; --light:#EAF4FC; --text:#1f2933; --muted:#616e7c; --err:#b42318; }
+  * { box-sizing:border-box; }
+  body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color:var(--text);
+         max-width:820px; margin:0 auto; padding:24px 16px 64px; line-height:1.45; background:#fff; }
+  header { display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+  h1 { font-size:1.35rem; margin:0; }
+  .lang button { border:1px solid var(--accent); background:#fff; color:var(--accent); padding:4px 10px;
+                 border-radius:4px; cursor:pointer; font-size:.85rem; }
+  .lang button.active { background:var(--accent); color:#fff; }
+  .instructions { background:var(--light); border-left:3px solid var(--accent); padding:12px 14px; margin:18px 0; }
+  fieldset.meta { border:1px solid #d9e2ec; border-radius:6px; padding:12px 14px; margin:0 0 18px; }
+  fieldset.meta legend { font-weight:600; padding:0 6px; }
+  .meta-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:10px; }
+  .meta-grid label { display:flex; flex-direction:column; font-size:.88rem; color:var(--muted); gap:3px; }
+  .meta-grid input, .meta-grid select { font-size:1rem; padding:6px; border:1px solid #bcccdc; border-radius:4px; }
+  .item { border-bottom:1px solid #e4e7eb; padding:14px 0; }
+  .item.missing { background:#fff4f2; }
+  .item p { margin:0 0 8px; font-weight:500; }
+  .item .num { color:var(--accent); font-weight:700; margin-right:6px; }
+  .scale { display:grid; grid-template-columns:repeat(11,1fr); gap:4px; }
+  .scale input { position:absolute; opacity:0; width:1px; height:1px; }
+  .scale label { display:block; text-align:center; padding:8px 0; border:1px solid #bcccdc; border-radius:4px;
+                 cursor:pointer; user-select:none; font-variant-numeric:tabular-nums; }
+  .scale input:checked + label { background:var(--accent); color:#fff; border-color:var(--accent); }
+  .scale input:focus-visible + label { outline:2px solid var(--text); outline-offset:1px; }
+  .anchors { display:flex; justify-content:space-between; font-size:.78rem; color:var(--muted); margin-top:4px; }
+  button.submit { margin-top:22px; background:var(--accent); color:#fff; border:none; padding:11px 22px;
+                  font-size:1rem; border-radius:5px; cursor:pointer; }
+  button.submit:disabled { opacity:.6; cursor:wait; }
+  #status { margin-top:14px; font-weight:500; }
+  #status.err { color:var(--err); }
+  #done { display:none; text-align:center; padding:60px 0; }
+  .hidden { display:none !important; }
+  @media (max-width:520px){ .scale label{ padding:7px 0; font-size:.85rem; } }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     CONFIGURATION — paste your Apps Script web-app URL here.
+     ============================================================ -->
+<script>
+  const ENDPOINT = "https://script.google.com/macros/s/AKfycbyfiYtHC8MFsLLMmeffJgnEzPgvwhDRDzpzomR3TU4wHRgMNBzjxsSH7a9YrU0e9RUP/exec";
+  const TOKEN    = "xyztfa1";   // must match TOKEN in Code.gs (light spam filter only)
+</script>
+
+<div id="app">
+<header>
+  <h1 data-t="title"></h1>
+  <div class="lang">
+    <button type="button" data-lang="pt" class="active">PT</button>
+    <button type="button" data-lang="en">EN</button>
+  </div>
+</header>
+
+<div class="instructions" data-t="instructions"></div>
+
+<form id="form" novalidate>
+  <fieldset class="meta" id="metaBox">
+    <legend data-t="metaLegend"></legend>
+    <div class="meta-grid">
+      <label><span data-t="participant"></span>
+        <input id="participant" name="participant" required autocomplete="off" placeholder="P1"></label>
+      <label><span data-t="condition"></span>
+        <select id="condition" name="condition" required>
+          <option value=""></option><option>TFA</option><option>Agent</option><option>Unaided</option>
+        </select></label>
+      <label><span data-t="order"></span>
+        <select id="order" name="order" required>
+          <option value=""></option><option>1</option><option>2</option><option>3</option>
+        </select></label>
+      <label><span data-t="task"></span>
+        <input id="task" name="task" required autocomplete="off" placeholder="T1"></label>
+    </div>
+  </fieldset>
+
+  <div id="items"></div>
+
+  <button type="submit" class="submit" data-t="submit"></button>
+  <div id="status" role="status" aria-live="polite"></div>
+</form>
+</div>
+
+<div id="done"><h2 data-t="thanks"></h2><p data-t="thanksSub"></p></div>
+
+<script>
+const T = {
+  pt: {
+    title: "Questionário de carga cognitiva",
+    instructions: "Todas as perguntas a seguir referem-se à <b>tarefa que você acabou de realizar</b>. " +
+      "Responda cada uma em uma escala de 0 a 10, em que <b>0</b> significa <i>de forma alguma</i> e " +
+      "<b>10</b> significa <i>completamente</i>. Não há respostas certas ou erradas; avaliamos a ferramenta, não você.",
+    metaLegend: "Identificação da sessão (preenchida pelo pesquisador)",
+    participant: "Código do participante", condition: "Condição", order: "Ordem da tarefa", task: "Tarefa",
+    lo: "0 — de forma alguma", hi: "10 — completamente",
+    submit: "Enviar respostas",
+    missing: "Por favor, responda todos os itens destacados e os campos da sessão.",
+    sending: "Enviando…",
+    fail: "Não foi possível enviar. Suas respostas foram salvas neste navegador; avise o pesquisador.",
+    thanks: "Obrigado!", thanksSub: "Suas respostas foram registradas. Você pode fechar esta página.",
+    items: [
+      "A solicitação de mudança desta tarefa era muito complexa.",
+      "A parte do código envolvida nesta tarefa era muito complexa.",
+      "Os conceitos e as regras de negócio envolvidos nesta tarefa eram muito complexos.",
+      "As informações que recebi durante a tarefa (do assistente e/ou dos materiais) eram muito pouco claras.",
+      "As informações que recebi durante a tarefa foram muito ineficazes para eu entender o código.",
+      "As informações que recebi durante a tarefa estavam cheias de linguagem confusa ou pouco clara.",
+      "Esta tarefa melhorou muito minha compreensão da parte do sistema em que trabalhei.",
+      "Esta tarefa melhorou muito minha compreensão de como o código envolvido se conecta ao resto do sistema.",
+      "Esta tarefa melhorou muito minha compreensão dos conceitos e regras de negócio envolvidos.",
+      "Esta tarefa melhorou muito minha capacidade de fazer sozinho(a) uma mudança semelhante neste sistema."
+    ]
+  },
+  en: {
+    title: "Cognitive load questionnaire",
+    instructions: "All of the following questions refer to the <b>task you just completed</b>. " +
+      "Answer each on a scale from 0 to 10, where <b>0</b> means <i>not at all the case</i> and " +
+      "<b>10</b> means <i>completely the case</i>. There are no right or wrong answers; we are evaluating the tool, not you.",
+    metaLegend: "Session identification (filled in by the researcher)",
+    participant: "Participant code", condition: "Condition", order: "Task order", task: "Task",
+    lo: "0 — not at all", hi: "10 — completely",
+    submit: "Submit answers",
+    missing: "Please answer all highlighted items and the session fields.",
+    sending: "Sending…",
+    fail: "Could not submit. Your answers were saved in this browser; please tell the researcher.",
+    thanks: "Thank you!", thanksSub: "Your answers have been recorded. You may close this page.",
+    items: [
+      "The change request I worked on in this task was very complex.",
+      "The part of the codebase involved in this task was very complex.",
+      "The concepts and business rules involved in this task were very complex.",
+      "The information I received during the task (from the assistant and/or the materials) was very unclear.",
+      "The information I received during the task was, in terms of understanding the code, very ineffective.",
+      "The information I received during the task was full of unclear or confusing language.",
+      "This task really improved my understanding of the part of the system I worked on.",
+      "This task really improved my understanding of how the code involved is connected to the rest of the system.",
+      "This task really improved my understanding of the concepts and business rules involved.",
+      "This task really improved my ability to make a similar change in this system on my own."
+    ]
+  }
+};
+
+let lang = "pt";
+const startedAt = Date.now();
+
+// ---- Build the 10 items (answers persist across language switches) ----
+const itemsDiv = document.getElementById("items");
+for (let i = 1; i <= 10; i++) {
+  const div = document.createElement("div");
+  div.className = "item"; div.id = "item" + i;
+  let scale = "";
+  for (let v = 0; v <= 10; v++) {
+    scale += `<input type="radio" name="q${i}" id="q${i}_${v}" value="${v}">` +
+             `<label for="q${i}_${v}">${v}</label>`;
+  }
+  div.innerHTML = `<p><span class="num">${i}.</span><span class="txt"></span></p>
+    <div class="scale" role="radiogroup">${scale}</div>
+    <div class="anchors"><span class="lo"></span><span class="hi"></span></div>`;
+  itemsDiv.appendChild(div);
+}
+
+function render() {
+  const t = T[lang];
+  document.documentElement.lang = lang === "pt" ? "pt-BR" : "en";
+  document.title = t.title;
+  document.querySelectorAll("[data-t]").forEach(el => { el.innerHTML = t[el.dataset.t]; });
+  document.querySelectorAll(".item").forEach((el, k) => {
+    el.querySelector(".txt").textContent = t.items[k];
+    el.querySelector(".lo").textContent = t.lo;
+    el.querySelector(".hi").textContent = t.hi;
+  });
+  document.querySelectorAll(".lang button").forEach(b => b.classList.toggle("active", b.dataset.lang === lang));
+}
+document.querySelectorAll(".lang button").forEach(b =>
+  b.addEventListener("click", () => { lang = b.dataset.lang; render(); }));
+
+// ---- Prefill session fields from the URL, e.g. ?p=P3&c=TFA&o=1&t=T1&lang=en
+//      If all four are present the box is hidden, so participants do not see the condition.
+const qs = new URLSearchParams(location.search);
+const map = { p: "participant", c: "condition", o: "order", t: "task" };
+let prefilled = 0;
+for (const [k, id] of Object.entries(map)) {
+  if (qs.get(k)) { document.getElementById(id).value = qs.get(k); prefilled++; }
+}
+if (prefilled === 4) document.getElementById("metaBox").classList.add("hidden");
+if (qs.get("lang") === "en") lang = "en";
+render();
+
+// ---- Submit ----
+const form = document.getElementById("form");
+const status = document.getElementById("status");
+
+form.addEventListener("submit", async (ev) => {
+  ev.preventDefault();
+  status.className = ""; status.textContent = "";
+  const data = { token: TOKEN, lang, timestamp_client: new Date().toISOString(),
+                 duration_s: Math.round((Date.now() - startedAt) / 1000) };
+  let ok = true;
+  for (const id of Object.values(map)) {
+    const v = document.getElementById(id).value.trim();
+    data[id] = v; if (!v) ok = false;
+  }
+  for (let i = 1; i <= 10; i++) {
+    const sel = form.querySelector(`input[name="q${i}"]:checked`);
+    document.getElementById("item" + i).classList.toggle("missing", !sel);
+    if (!sel) ok = false; else data["q" + i] = Number(sel.value);
+  }
+  if (!ok) {
+    status.className = "err"; status.textContent = T[lang].missing;
+    if (Object.values(map).some(id => !data[id])) document.getElementById("metaBox").classList.remove("hidden");
+    const first = document.querySelector(".item.missing"); if (first) first.scrollIntoView({behavior:"smooth", block:"center"});
+    return;
+  }
+
+  // Local backup first, so nothing is lost if the network fails.
+  const backup = JSON.parse(localStorage.getItem("cl_backup") || "[]");
+  backup.push(data); localStorage.setItem("cl_backup", JSON.stringify(backup));
+
+  const btn = form.querySelector("button.submit");
+  btn.disabled = true; status.textContent = T[lang].sending;
+  try {
+    // text/plain avoids a CORS preflight, which Apps Script does not answer.
+    const res = await fetch(ENDPOINT, { method: "POST",
+      headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(data) });
+    const out = await res.json();
+    if (!out.ok) throw new Error(out.error || "server error");
+    backup.pop(); localStorage.setItem("cl_backup", JSON.stringify(backup));
+    document.getElementById("app").classList.add("hidden");
+    document.getElementById("done").style.display = "block";
+    render();
+  } catch (e) {
+    console.error(e);
+    status.className = "err"; status.textContent = T[lang].fail;
+    btn.disabled = false;
+  }
+});
+
+// Researcher helper: open the browser console and run  exportBackup()
+// to download any answers that failed to send.
+window.exportBackup = function () {
+  const rows = JSON.parse(localStorage.getItem("cl_backup") || "[]");
+  const cols = ["participant","condition","order","task","q1","q2","q3","q4","q5","q6","q7","q8","q9","q10",
+                "lang","timestamp_client","duration_s"];
+  const csv = [cols.join(",")].concat(rows.map(r => cols.map(c => (r[c] === undefined ? "" : r[c])).join(","))).join("\n");
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([csv], {type:"text/csv"}));
+  a.download = "cl_backup.csv"; a.click();
+  return rows.length + " rows";
+};
+</script>
+</body>
+</html>
