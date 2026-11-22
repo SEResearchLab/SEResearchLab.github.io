@@ -1,0 +1,20 @@
+:root{
+  --font-display:"Outfit",-apple-system,"Segoe UI",sans-serif;   /* headings, numerals, the wordmark */
+  --font-body:"Plus Jakarta Sans",-apple-system,"Segoe UI",sans-serif; /* running prose */
+  --font-mono:"JetBrains Mono",ui-monospace,"SF Mono",monospace; /* labels, venue lines, data */
+
+  /* Scale lifted from the A0 poster (px at 96dpi) and reduced for screen */
+  --text-3xs:11px; --text-2xs:12px; --text-xs:13px; --text-sm:14px; --text-base:16px;
+  --text-lg:18px; --text-xl:21px; --text-2xl:24px; --text-3xl:30px; --text-4xl:38px;
+  --text-5xl:48px; --text-6xl:64px; --text-display:86px; --text-hero:132px;
+
+  --weight-light:300; --weight-regular:400; --weight-medium:500; --weight-semibold:600; --weight-bold:700; --weight-black:800;
+
+  /* Line heights as used on the poster: tight for display, 1.35 for prose */
+  --leading-hero:1.00; --leading-display:1.06; --leading-heading:1.10;
+  --leading-snug:1.25; --leading-body:1.35; --leading-loose:1.42;
+
+  /* Tracking: display is negative, mono labels are wide */
+  --tracking-hero:-0.05em; --tracking-display:-0.024em; --tracking-heading:-0.012em;
+  --tracking-body:-0.008em; --tracking-normal:0em; --tracking-label:0.10em; --tracking-label-wide:0.16em;
+}

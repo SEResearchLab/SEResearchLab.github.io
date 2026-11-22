@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="Conference poster (A0)" description="A0 portrait research poster on the lab grid — masthead, key finding, eight numbered sections, QR footer." -->
+<helmet><script src="./ds-base.js"></script><style>body{margin:0;background:#E7EBF0}</style></helmet>
+<div style="width:3179px;height:4493px;background:#FFFFFF;display:flex;flex-direction:column;font-family:'Plus Jakarta Sans',sans-serif;color:#0B192C;box-sizing:border-box;overflow:hidden">
+
+<header style="background:#0B192C;padding:91px 154px 0;height:706px;flex:none;box-sizing:border-box;display:flex;flex-direction:column">
+<div style="display:flex;justify-content:space-between;align-items:flex-start">
+<span style="display:inline-flex;align-items:center;gap:48px"><img src="../../assets/seresearch-mark.png" alt="" style="width:235px"><span style="display:flex;flex-direction:column;gap:22px"><span style="font-family:'Outfit',sans-serif;font-weight:700;font-size:61px;line-height:1;letter-spacing:-0.03em;color:#FFFFFF">SEResearch<span style="font-weight:300"> Lab</span></span><span style="font-size:29px;color:#94A3B8">Human &amp; Social Aspects of Software Engineering</span></span></span>
+<span style="display:flex;flex-direction:column;align-items:flex-end;gap:22px"><img src="../../assets/inf-ufrgs-white.png" alt="" style="width:333px"><span style="font-size:28px;color:#94A3B8">Instituto de Informática · UFRGS</span></span>
+</div>
+<h1 style="margin:6px 0 0;font-family:'Outfit',sans-serif;font-weight:700;font-size:115px;line-height:1.06;letter-spacing:-0.03em;color:#F8FAFC;max-width:2871px">Poster title goes here, in one or two lines at most</h1>
+<div style="margin-top:auto;padding-bottom:77px;display:flex;justify-content:space-between;align-items:flex-end;gap:48px">
+<span style="font-size:35px;color:#F8FAFC">Author Name¹ &nbsp;·&nbsp; Author Name¹ &nbsp;·&nbsp; Author Name²<span style="font-size:28px;color:#94A3B8;margin-left:40px">¹ INF/UFRGS &nbsp;&nbsp; ² Affiliation</span></span>
+<span style="font-family:'JetBrains Mono',monospace;font-weight:500;font-size:32px;color:#F97316;white-space:nowrap">EMSE / ICSE 2027 &nbsp;·&nbsp; Poster track</span>
+</div>
+</header>
+<div style="height:21px;background:#F97316;flex:none"></div>
+
+<main style="padding:62px 154px 0;flex:none;box-sizing:border-box;display:flex;flex-direction:column;gap:39px">
+
+<section style="position:relative;background:#FAF8F5;border:2px solid #D8DEE6;height:331px;display:flex;align-items:center;gap:0;box-sizing:border-box">
+<span style="position:absolute;left:0;top:0;bottom:0;width:15px;background:#F97316"></span>
+<div style="padding-left:76px;width:730px;flex:none">
+<div style="font-family:'JetBrains Mono',monospace;font-weight:600;font-size:31px;letter-spacing:0.18em;color:#EA580C">KEY FINDING</div>
+<div style="font-family:'Outfit',sans-serif;font-weight:700;font-size:176px;line-height:1;letter-spacing:-0.05em;color:#EA580C;margin-top:12px">68%</div>
+</div>
+<p style="margin:0;width:1290px;flex:none;font-size:40px;line-height:1.3;color:#0B192C">of reviewers re-read agent-authored diffs at least twice before approving</p>
+<div style="width:5px;align-self:stretch;margin:82px 0 82px 80px;background:#CBD5E1;flex:none"></div>
+<ul style="margin:0;padding:0 0 0 87px;list-style:none;display:flex;flex-direction:column;gap:14px;font-size:29px;line-height:1.42;color:#64748B">
+<li>2.4× longer on unfamiliar files</li><li>41% asked for a written rationale</li><li>1 in 5 escalated to a second reviewer</li></ul>
+</section>
+
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:76px">
+
+<section style="background:#FFFFFF;border:2px solid #D8DEE6;padding:70px;height:979px;box-sizing:border-box;display:flex;flex-direction:column">
+<div style="height:9px;background:#EA580C"></div>
+<div style="display:flex;align-items:baseline;gap:40px;margin-top:27px"><span style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:35px;color:#EA580C">01</span><h2 style="margin:0;font-family:'Outfit',sans-serif;font-weight:600;font-size:59px;line-height:1.06;letter-spacing:-0.022em;color:#0B192C">Motivation</h2></div>
+<div style="margin-top:40px;display:flex;flex-direction:column;gap:26px;font-size:31px;line-height:1.35;color:#334155">
+<p style="margin:0">Agents now open a measurable share of pull requests in open-source projects, but code review was designed around a human author who can be asked what they intended.</p>
+<p style="margin:0">We do not yet know how reviewers reallocate attention when that conversation is unavailable — or what it costs them.</p>
+</div>
+</section>
+
+<section style="background:#FFFFFF;border:2px solid #D8DEE6;padding:70px;height:979px;box-sizing:border-box;display:flex;flex-direction:column">
+<div style="height:9px;background:#EA580C"></div>
+<div style="display:flex;align-items:baseline;gap:40px;margin-top:27px"><span style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:35px;color:#EA580C">02</span><h2 style="margin:0;font-family:'Outfit',sans-serif;font-weight:600;font-size:59px;line-height:1.06;letter-spacing:-0.022em;color:#0B192C">Research questions</h2></div>
+<div style="margin-top:40px;display:flex;flex-direction:column;gap:24px">
+<div style="position:relative;background:#F8FAFC;border:2px solid #D8DEE6;padding:21px 30px 21px 39px;height:211px;box-sizing:border-box"><span style="position:absolute;left:0;top:0;bottom:0;width:11px;background:#EA580C"></span><div style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:28px;color:#EA580C;letter-spacing:0.04em">RQ1</div><p style="margin:10px 0 0;font-size:29px;line-height:1.34;color:#0B192C">How do reviewers allocate attention when the author of a change is an agent rather than a colleague?</p></div>
+<div style="position:relative;background:#F8FAFC;border:2px solid #D8DEE6;padding:21px 30px 21px 39px;height:211px;box-sizing:border-box"><span style="position:absolute;left:0;top:0;bottom:0;width:11px;background:#EA580C"></span><div style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:28px;color:#EA580C;letter-spacing:0.04em">RQ2</div><p style="margin:10px 0 0;font-size:29px;line-height:1.34;color:#0B192C">Which review signals substitute for the missing author rationale?</p></div>
+<div style="position:relative;background:#F8FAFC;border:2px solid #D8DEE6;padding:21px 30px 21px 39px;height:211px;box-sizing:border-box"><span style="position:absolute;left:0;top:0;bottom:0;width:11px;background:#EA580C"></span><div style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:28px;color:#EA580C;letter-spacing:0.04em">RQ3</div><p style="margin:10px 0 0;font-size:29px;line-height:1.34;color:#0B192C">What does the substitution cost in time and defect detection?</p></div>
+</div>
+</section>
+
+<section style="background:#FFFFFF;border:2px solid #D8DEE6;padding:70px;height:979px;box-sizing:border-box;display:flex;flex-direction:column">
+<div style="height:9px;background:#EA580C"></div>
+<div style="display:flex;align-items:baseline;gap:40px;margin-top:27px"><span style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:35px;color:#EA580C">03</span><h2 style="margin:0;font-family:'Outfit',sans-serif;font-weight:600;font-size:59px;line-height:1.06;letter-spacing:-0.022em;color:#0B192C">Contributions</h2></div>
+<div style="margin-top:40px;display:flex;flex-direction:column;gap:26px;font-size:31px;line-height:1.35;color:#334155">
+<p style="margin:0">A mixed-methods account of reviewer attention under agent authorship, grounded in 1,204 pull requests and 12 follow-up interviews.</p>
+<p style="margin:0">An instrument others can reuse: the coding scheme, the think-aloud protocol and the analysis scripts are in the replication package.</p>
+<p style="margin:0">Three design implications for review tooling, stated concretely enough to be disagreed with.</p>
+</div>
+</section>
+
+</div>
+
+<section style="background:#FAF8F5;border:2px solid #D8DEE6;padding:76px 86px;height:672px;box-sizing:border-box;display:flex;flex-direction:column">
+<div style="height:9px;background:#EA580C"></div>
+<div style="display:flex;align-items:baseline;gap:40px;margin-top:27px"><span style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:35px;color:#EA580C">04</span><h2 style="margin:0;font-family:'Outfit',sans-serif;font-weight:600;font-size:59px;line-height:1.06;letter-spacing:-0.022em;color:#0B192C">Study design &amp; conceptual model</h2></div>
+<div style="margin-top:33px;background:#F5F7FA;border:2px solid #D8DEE6;height:341px;flex:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px">
+<div style="font-size:45px;color:#64748B">Wide figure placeholder — pipeline or conceptual model</div>
+<div style="font-family:'JetBrains Mono',monospace;font-size:32px;color:#64748B">Replace with your diagram · full width, 300 dpi or vector</div>
+<div style="width:230px;height:10px;background:#EA580C;margin-top:14px"></div>
+</div>
+<p style="margin:19px 0 0;font-size:32px;color:#64748B;text-align:center">Caption: what the figure shows, and the one relationship the reader should take away from it.</p>
+</section>
+
+<section style="background:#FFFFFF;border:2px solid #D8DEE6;padding:72px 86px;height:653px;box-sizing:border-box;display:flex;flex-direction:column">
+<div style="height:9px;background:#EA580C"></div>
+<div style="display:flex;align-items:baseline;gap:40px;margin-top:27px"><span style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:35px;color:#EA580C">05</span><h2 style="margin:0;font-family:'Outfit',sans-serif;font-weight:600;font-size:59px;line-height:1.06;letter-spacing:-0.022em;color:#0B192C">Results</h2></div>
+<table style="width:100%;border-collapse:collapse;margin-top:34px">
+<thead><tr style="background:#F8FAFC">
+<th style="text-align:left;padding:13px 26px;font-family:'JetBrains Mono',monospace;font-weight:500;font-size:29px;letter-spacing:0.06em;color:#64748B;border-bottom:3px solid #CBD5E1">Condition</th>
+<th style="text-align:right;padding:13px 26px;font-family:'JetBrains Mono',monospace;font-weight:500;font-size:29px;letter-spacing:0.06em;color:#64748B;border-bottom:3px solid #CBD5E1">n</th>
+<th style="text-align:right;padding:13px 26px;font-family:'JetBrains Mono',monospace;font-weight:500;font-size:29px;letter-spacing:0.06em;color:#64748B;border-bottom:3px solid #CBD5E1">Review time (min)</th>
+<th style="text-align:right;padding:13px 26px;font-family:'JetBrains Mono',monospace;font-weight:500;font-size:29px;letter-spacing:0.06em;color:#64748B;border-bottom:3px solid #CBD5E1">Defects found</th>
+<th style="text-align:right;padding:13px 26px;font-family:'JetBrains Mono',monospace;font-weight:500;font-size:29px;letter-spacing:0.06em;color:#64748B;border-bottom:3px solid #CBD5E1">Rationale asked</th>
+<th style="text-align:right;padding:13px 26px;font-family:'JetBrains Mono',monospace;font-weight:500;font-size:29px;letter-spacing:0.06em;color:#64748B;border-bottom:3px solid #CBD5E1">p</th></tr></thead>
+<tbody>
+<tr><td style="padding:12px 26px;border-bottom:2px solid #D8DEE6;font-size:31px;color:#0B192C">Human-authored</td><td style="padding:12px 26px;border-bottom:2px solid #D8DEE6;text-align:right;font-family:'JetBrains Mono',monospace;font-size:31px;color:#334155">104</td><td style="padding:12px 26px;border-bottom:2px solid #D8DEE6;text-align:right;font-family:'JetBrains Mono',monospace;font-size:31px;color:#334155">18.2</td><td style="padding:12px 26px;border-bottom:2px solid #D8DEE6;text-align:right;font-family:'JetBrains Mono',monospace;font-size:31px;color:#334155">3.1</td><td style="padding:12px 26px;border-bottom:2px solid #D8DEE6;text-align:right;font-family:'JetBrains Mono',monospace;font-size:31px;color:#334155">12%</td><td style="padding:12px 26px;border-bottom:2px solid #D8DEE6;text-align:right;font-family:'JetBrains Mono',monospace;font-size:31px;color:#334155">—</td></tr>
+<tr style="background:#FAF8F5"><td style="padding:12px 26px;border-bottom:2px solid #D8DEE6;font-size:31px;font-weight:600;color:#0B192C">Agent-authored, labelled</td><td style="padding:12px 26px;border-bottom:2px solid #D8DEE6;text-align:right;font-family:'JetBrains Mono',monospace;font-size:31px;color:#334155">97</td><td style="padding:12px 26px;border-bottom:2px solid #D8DEE6;text-align:right;font-family:'JetBrains Mono',monospace;font-size:31px;color:#334155">24.7</td><td style="padding:12px 26px;border-bottom:2px solid #D8DEE6;text-align:right;font-family:'JetBrains Mono',monospace;font-size:31px;color:#334155">3.6</td><td style="padding:12px 26px;border-bottom:2px solid #D8DEE6;text-align:right;font-family:'JetBrains Mono',monospace;font-size:31px;color:#334155">41%</td><td style="padding:12px 26px;border-bottom:2px solid #D8DEE6;text-align:right;font-family:'JetBrains Mono',monospace;font-size:31px;color:#334155">0.004</td></tr>
+<tr><td style="padding:12px 26px;border-bottom:2px solid #D8DEE6;font-size:31px;color:#0B192C">Agent-authored, unlabelled</td><td style="padding:12px 26px;border-bottom:2px solid #D8DEE6;text-align:right;font-family:'JetBrains Mono',monospace;font-size:31px;color:#334155">101</td><td style="padding:12px 26px;border-bottom:2px solid #D8DEE6;text-align:right;font-family:'JetBrains Mono',monospace;font-size:31px;color:#334155">17.9</td><td style="padding:12px 26px;border-bottom:2px solid #D8DEE6;text-align:right;font-family:'JetBrains Mono',monospace;font-size:31px;color:#334155">2.4</td><td style="padding:12px 26px;border-bottom:2px solid #D8DEE6;text-align:right;font-family:'JetBrains Mono',monospace;font-size:31px;color:#334155">9%</td><td style="padding:12px 26px;border-bottom:2px solid #D8DEE6;text-align:right;font-family:'JetBrains Mono',monospace;font-size:31px;color:#334155">0.021</td></tr>
+<tr><td style="padding:12px 26px;border-bottom:2px solid #D8DEE6;font-size:31px;color:#0B192C">Mixed authorship</td><td style="padding:12px 26px;border-bottom:2px solid #D8DEE6;text-align:right;font-family:'JetBrains Mono',monospace;font-size:31px;color:#334155">88</td><td style="padding:12px 26px;border-bottom:2px solid #D8DEE6;text-align:right;font-family:'JetBrains Mono',monospace;font-size:31px;color:#334155">22.4</td><td style="padding:12px 26px;border-bottom:2px solid #D8DEE6;text-align:right;font-family:'JetBrains Mono',monospace;font-size:31px;color:#334155">3.3</td><td style="padding:12px 26px;border-bottom:2px solid #D8DEE6;text-align:right;font-family:'JetBrains Mono',monospace;font-size:31px;color:#334155">27%</td><td style="padding:12px 26px;border-bottom:2px solid #D8DEE6;text-align:right;font-family:'JetBrains Mono',monospace;font-size:31px;color:#334155">0.14</td></tr>
+</tbody></table>
+<p style="margin:18px 0 0;font-family:'JetBrains Mono',monospace;font-size:27px;color:#64748B">Mixed-effects model with reviewer as a random effect; p-values Holm-corrected. Full model output in the replication package.</p>
+</section>
+
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:76px">
+
+<section style="background:#FFFFFF;border:2px solid #D8DEE6;padding:58px 67px;height:538px;box-sizing:border-box;display:flex;flex-direction:column">
+<div style="height:9px;background:#EA580C"></div>
+<div style="display:flex;align-items:baseline;gap:40px;margin-top:27px"><span style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:35px;color:#EA580C">06</span><h2 style="margin:0;font-family:'Outfit',sans-serif;font-weight:600;font-size:59px;line-height:1.06;letter-spacing:-0.022em;color:#0B192C">Interpretation</h2></div>
+<div style="margin-top:36px;display:flex;flex-direction:column;gap:26px;font-size:28px;line-height:1.35;color:#334155">
+<p style="margin:0">Labelling the author changes behaviour more than the code does — the same diff is read differently once its provenance is visible.</p>
+<p style="margin:0">Reviewers substitute re-reading for asking. That recovers defect detection but costs roughly six minutes per change.</p>
+</div>
+</section>
+
+<section style="background:#FFFFFF;border:2px solid #D8DEE6;padding:58px 67px;height:538px;box-sizing:border-box;display:flex;flex-direction:column">
+<div style="height:9px;background:#EA580C"></div>
+<div style="display:flex;align-items:baseline;gap:40px;margin-top:27px"><span style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:35px;color:#EA580C">07</span><h2 style="margin:0;font-family:'Outfit',sans-serif;font-weight:600;font-size:59px;line-height:1.06;letter-spacing:-0.022em;color:#0B192C">Threats to validity</h2></div>
+<div style="margin-top:36px;display:flex;flex-direction:column;gap:18px;font-size:28px;line-height:1.35;color:#334155">
+<p style="margin:0">Construct: self-reported effort may lag observed effort; we triangulate with timestamps.</p>
+<p style="margin:0">External: OSS projects with public review; findings may not transfer to closed teams with different norms.</p>
+<p style="margin:0">Internal: labelling was not randomised in two repositories.</p>
+</div>
+</section>
+
+<section style="background:#FFFFFF;border:2px solid #D8DEE6;padding:58px 67px;height:538px;box-sizing:border-box;display:flex;flex-direction:column">
+<div style="height:9px;background:#EA580C"></div>
+<div style="display:flex;align-items:baseline;gap:40px;margin-top:27px"><span style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:35px;color:#EA580C">08</span><h2 style="margin:0;font-family:'Outfit',sans-serif;font-weight:600;font-size:59px;line-height:1.06;letter-spacing:-0.022em;color:#0B192C">Conclusion &amp; next steps</h2></div>
+<div style="margin-top:36px;display:flex;flex-direction:column;gap:26px;font-size:28px;line-height:1.35;color:#334155">
+<p style="margin:0">Provenance is a review signal, not metadata. Tooling that hides it is making a decision on the reviewer's behalf.</p>
+<p style="margin:0">Next: a field experiment varying how rationale is surfaced, running with two industrial partners in 2027.</p>
+</div>
+</section>
+
+</div>
+</main>
+
+<footer style="margin-top:auto;background:#0B192C;border-top:15px solid #F97316;padding:36px 154px;height:375px;flex:none;display:flex;justify-content:space-between;align-items:flex-start;gap:80px;box-sizing:border-box;overflow:hidden">
+<div style="display:flex;flex-direction:column;gap:14px;max-width:1478px">
+<div style="font-family:'JetBrains Mono',monospace;font-weight:600;font-size:28px;letter-spacing:0.18em;color:#F97316">REFERENCES</div>
+<div style="display:flex;flex-direction:column;gap:6px;font-size:25px;line-height:1.5;color:#94A3B8">
+<span>[1] Author, A., &amp; Author, B. (2025). Title of the paper. Empirical Software Engineering, 30(4), 1–28.</span>
+<span>[2] Author, C. (2024). Title of the conference paper. In Proc. ICSE ’24 (pp. 112–124).</span>
+<span>[3] Author, D. et al. (2026). Title of the preprint. arXiv:2601.01234.</span>
+</div>
+<div style="margin-top:12px;font-size:28px;color:#F8FAFC">name.surname@inf.ufrgs.br &nbsp;&nbsp;·&nbsp;&nbsp; seresearchlab.github.io</div>
+</div>
+<img src="../../assets/inf-ufrgs-white.png" alt="" style="width:256px;align-self:center;opacity:0.9">
+<div style="display:flex;gap:25px">
+<div style="display:flex;flex-direction:column;gap:4px;align-items:center"><div style="width:248px;height:248px;background:#FFFFFF;display:flex;align-items:center;justify-content:center"><div style="width:221px;height:221px;background:repeating-conic-gradient(#0B192C 0% 25%, #FFFFFF 0% 50%) 0 0/28px 28px"></div></div><span style="font-family:'JetBrains Mono',monospace;font-size:25px;letter-spacing:0.1em;color:#94A3B8">Paper</span></div>
+<div style="display:flex;flex-direction:column;gap:4px;align-items:center"><div style="width:248px;height:248px;background:#FFFFFF;display:flex;align-items:center;justify-content:center"><div style="width:221px;height:221px;background:repeating-conic-gradient(#0B192C 0% 25%, #FFFFFF 0% 50%) 0 0/28px 28px"></div></div><span style="font-family:'JetBrains Mono',monospace;font-size:25px;letter-spacing:0.1em;color:#94A3B8">Dataset</span></div>
+<div style="display:flex;flex-direction:column;gap:4px;align-items:center"><div style="width:248px;height:248px;background:#FFFFFF;display:flex;align-items:center;justify-content:center"><div style="width:221px;height:221px;background:repeating-conic-gradient(#0B192C 0% 25%, #FFFFFF 0% 50%) 0 0/28px 28px"></div></div><span style="font-family:'JetBrains Mono',monospace;font-size:25px;letter-spacing:0.1em;color:#94A3B8">Replication</span></div>
+</div>
+</footer>
+
+</div>
+</x-dc>
+</body>
+</html>

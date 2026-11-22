@@ -1,0 +1,40 @@
+/* The seven tested nuances from lab_brand.html. Default :root is nuance 2
+   (Classic Identity, Light). Apply a theme by setting data-theme on any ancestor. */
+[data-theme="classic-dark"]{
+  --surface-page:#050C1A; --surface-card:#0B192C; --surface-sunken:#101B33; --surface-figure:#101B33;
+  --surface-paper:#0B192C; --surface-inverse:#050C1A;
+  --text-strong:#F8FAFC; --text-body:#CBD5E1; --text-muted:#94A3B8; --text-faint:#64748B;
+  --text-accent:#F97316; --text-on-inverse:#F8FAFC;
+  --border-hairline:rgba(248,250,252,.14); --border-strong:rgba(248,250,252,.24);
+  --accent-ink:#F97316; --rule-accent:#F97316; --link:#FB923C; --link-hover:#FDBA74;
+}
+[data-theme="solar-rigor"]{
+  --surface-page:#040913; --surface-card:#071224; --surface-sunken:#0B192C; --surface-figure:#0B192C;
+  --text-strong:#F8FAFC; --text-body:#CBD5E1; --text-muted:#94A3B8;
+  --text-accent:#EA580C; --border-hairline:rgba(248,250,252,.12);
+  --accent:#EA580C; --accent-ink:#EA580C; --rule-accent:#EA580C; --link:#F97316; --link-hover:#FB923C;
+}
+[data-theme="cyber-humanist"]{
+  --surface-page:#0A0F1F; --surface-card:#101B33; --surface-sunken:#0B192C; --surface-figure:#0B192C;
+  --text-strong:#F8FAFC; --text-body:#CBD5E1; --text-muted:#94A3B8;
+  --text-accent:#FF6B35; --border-hairline:rgba(248,250,252,.14);
+  --accent:#FF6B35; --accent-ink:#FF6B35; --rule-accent:#FF6B35; --link:#FF6B35; --link-hover:#FDBA74;
+}
+[data-theme="nordic-empathy"]{
+  --surface-page:#FAF8F5; --surface-card:#FFFFFF; --surface-sunken:#F5F2ED; --surface-figure:#F5F2ED;
+  --text-strong:#111827; --text-body:#334155; --text-muted:#64748B;
+  --text-accent:#B45309; --border-hairline:#E4DED4; --border-strong:#D6CEC1;
+  --accent:#F59E0B; --accent-ink:#B45309; --rule-accent:#F59E0B; --link:#B45309; --link-hover:#92400E;
+}
+[data-theme="monochrome-midnight"]{
+  --surface-page:#FFFFFF; --surface-card:#FFFFFF; --surface-sunken:#F8FAFC; --surface-figure:#F8FAFC;
+  --text-strong:#0B192C; --text-body:#0B192C; --text-muted:#1E3E62;
+  --text-accent:#0B192C; --border-hairline:#0B192C; --border-strong:#0B192C;
+  --accent:#0B192C; --accent-ink:#0B192C; --rule-accent:#0B192C; --link:#0B192C; --link-hover:#1E3E62;
+}
+[data-theme="stencil-white"]{
+  --surface-page:transparent; --surface-card:transparent; --surface-sunken:transparent;
+  --text-strong:#FFFFFF; --text-body:#FFFFFF; --text-muted:rgba(255,255,255,.72);
+  --text-accent:#FFFFFF; --border-hairline:rgba(255,255,255,.5); --border-strong:#FFFFFF;
+  --accent:#FFFFFF; --accent-ink:#FFFFFF; --rule-accent:#FFFFFF; --link:#FFFFFF; --link-hover:rgba(255,255,255,.8);
+}

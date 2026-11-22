@@ -1,0 +1,18 @@
+:root{
+  /* The identity is square. Corners stay sharp; softening is reserved
+     for pills (mono labels, buttons) and avatars. */
+  --radius-none:0px;
+  --radius-xs:2px;
+  --radius-sm:3px;
+  --radius-pill:999px;
+  --radius-circle:50%;
+
+  --border-width:1px;
+  --border-width-card:2px;   /* poster cards use a 2pt hairline */
+  --rule-width:3px;          /* the orange rule above a section title */
+  --rule-width-heavy:6px;    /* header underline, left bar on highlight cards */
+  --band-accent:7px;         /* full-bleed orange band under the navy header */
+
+  --border-card:var(--border-width-card) solid var(--border-hairline);
+  --rule:var(--rule-width) solid var(--rule-accent);
+}

@@ -1,0 +1,37 @@
+<!-- @dsCard group="Components" viewport="700x340" name="Core controls" subtitle="Buttons, fields, toggles and metadata chips" -->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/lucide@0.454.0/dist/umd/lucide.min.js"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>*{box-sizing:border-box}body{margin:0;padding:20px 24px;font-family:var(--font-body);background:var(--surface-page);color:var(--text-body)}.row{display:flex;gap:14px;align-items:center;flex-wrap:wrap}.cap{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-faint);margin-bottom:8px}a{color:var(--link)}a:hover{color:var(--link-hover)}</style></head>
+<body><div id="root"></div><script type="text/babel">
+const {Button,IconButton,Input,Select,Checkbox,Switch,Tag,Badge}=window.SEResearchLabDesignSystem_d35e15;
+function Demo(){const [on,setOn]=React.useState(true);return (
+<div style={{display:'flex',flexDirection:'column',gap:22}}>
+  <div><div className="cap">Button — variants & sizes</div><div className="row">
+    <Button>Download PDF</Button><Button variant="secondary">Read abstract</Button>
+    <Button variant="outline">Replication</Button><Button variant="ghost">BibTeX</Button>
+    <Button size="sm">Small</Button><Button size="lg">Large</Button><Button disabled>Disabled</Button>
+  </div></div>
+  <div><div className="cap">Icon button · Tag · Badge</div><div className="row">
+    <IconButton label="Copy"><i data-lucide="clipboard" width="16" height="16"></i></IconButton>
+    <IconButton variant="solid" label="Download"><i data-lucide="download" width="16" height="16"></i></IconButton>
+    <IconButton variant="ghost" label="Link"><i data-lucide="external-link" width="16" height="16"></i></IconButton>
+    <Tag tone="accent">ICSE 2026</Tag><Tag>Mixed methods</Tag><Tag tone="navy">Replication</Tag><Tag tone="solid">New</Tag>
+    <Badge status="positive">Accepted</Badge><Badge status="warning">Under review</Badge><Badge status="accent">Preprint</Badge>
+  </div></div>
+  <div><div className="cap">Fields</div><div style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',gap:16,alignItems:'start'}}>
+    <Input label="Institutional email" placeholder="name.surname@inf.ufrgs.br"/>
+    <Select label="Venue" options={['All venues','ICSE','EMSE','FSE','CHASE']}/>
+    <Input label="ORCID" error="Not a valid ORCID iD" defaultValue="0000-1111"/>
+  </div></div>
+  <div className="row" style={{gap:28}}>
+    <Checkbox label="Send me the annual report" defaultChecked/>
+    <Checkbox label="Unchecked option"/>
+    <Switch checked={on} onChange={setOn} label="Dark keynote theme"/>
+  </div>
+</div>);}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);
+lucide&&lucide.createIcons&&setTimeout(()=>lucide.createIcons(),0);</script></body></html>

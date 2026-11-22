@@ -1,0 +1,58 @@
+:root{
+  /* ---- Brand core (lab_brand.html, Option 04) ---- */
+  --midnight-navy:#0B192C;      /* Primary. Code-bracket anchors, headings, dark grounds */
+  --radiant-tangerine:#F97316;  /* Accent. The pulse wave, rules, links */
+  --oceanic-indigo:#1E3E62;     /* Syntax slate. Bracket strokes on dark */
+  --ember-warmth:#FB923C;       /* Human node at the apex of the pulse */
+  --solar-flare:#EA580C;        /* Accent on light grounds (poster ink) */
+  --dark-void:#050C1A;          /* Darkest canvas */
+
+  /* ---- Navy ramp ---- */
+  --navy-900:#050C1A; --navy-800:#0B192C; --navy-700:#101B33; --navy-600:#1E3E62; --navy-500:#2C5385;
+
+  /* ---- Orange ramp ---- */
+  --orange-700:#C2410C; --orange-600:#EA580C; --orange-500:#F97316; --orange-400:#FB923C; --orange-300:#FDBA74; --orange-100:#FFEDD5;
+
+  /* ---- Neutral ramp (slate, cool) ---- */
+  --white:#FFFFFF;
+  --slate-50:#F8FAFC; --slate-75:#F5F7FA; --slate-200:#D8DEE6; --slate-300:#CBD5E1;
+  --slate-400:#94A3B8; --slate-500:#64748B; --slate-700:#334155; --slate-900:#111827;
+
+  /* ---- Warm paper (academic print) ---- */
+  --paper:#FAF8F5;
+
+  /* ---- Semantic: light ground (default) ---- */
+  --surface-page:var(--white);
+  --surface-card:var(--white);
+  --surface-sunken:var(--slate-50);
+  --surface-figure:var(--slate-75);
+  --surface-paper:var(--paper);
+  --surface-inverse:var(--navy-800);
+
+  --text-strong:var(--navy-800);
+  --text-body:var(--slate-700);
+  --text-muted:var(--slate-500);
+  --text-faint:var(--slate-400);
+  --text-accent:var(--solar-flare);
+  --text-on-accent:var(--white);
+  --text-on-inverse:var(--slate-50);
+
+  --border-hairline:var(--slate-200);
+  --border-strong:var(--slate-300);
+  --border-inverse:rgba(248,250,252,.16);
+
+  --accent:var(--radiant-tangerine);
+  --accent-ink:var(--solar-flare);
+  --accent-soft:var(--orange-100);
+  --rule-accent:var(--solar-flare);
+
+  --focus-ring:var(--radiant-tangerine);
+  --link:var(--solar-flare);
+  --link-hover:var(--orange-700);
+
+  /* ---- Status ---- */
+  --status-positive:#15803D;
+  --status-warning:#B45309;
+  --status-critical:#B91C1C;
+  --status-info:var(--navy-600);
+}

@@ -1,0 +1,40 @@
+<!-- @dsCard group="Brand Portal" viewport="1280x820" name="Brand portal — full page" subtitle="Recreation of lab_brand.html: hero, colour architecture, logo suite, slides, downloads" -->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>SEResearch Lab — Brand Identity & Download Suite</title>
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>*{box-sizing:border-box}body{margin:0;font-family:var(--font-body);background:var(--surface-page);color:var(--text-body)}
+a{color:var(--link);text-decoration:none}a:hover{color:var(--link-hover)}
+html{scroll-behavior:smooth}
+.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%);background:var(--midnight-navy);color:#F8FAFC;
+padding:12px 22px;font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+box-shadow:var(--shadow-overlay);z-index:80}</style></head>
+<body><div id="root"></div>
+<script type="text/babel" src="Nav.jsx"></script>
+<script type="text/babel" src="Hero.jsx"></script>
+<script type="text/babel" src="ColorArchitecture.jsx"></script>
+<script type="text/babel" src="LogoSuite.jsx"></script>
+<script type="text/babel" src="SlidesSection.jsx"></script>
+<script type="text/babel" src="DownloadHub.jsx"></script>
+<script type="text/babel">
+function App(){
+  const [active,setActive]=React.useState('hero');
+  const [toast,setToast]=React.useState(null);
+  const nav=id=>{setActive(id);const el=document.getElementById(id);if(el)window.scrollTo({top:el.offsetTop-70,behavior:'smooth'});};
+  const copy=hex=>{setToast('Copied '+hex+' to clipboard');setTimeout(()=>setToast(null),1600);};
+  return (<>
+    <Nav active={active} onNav={nav}/>
+    <Hero/>
+    <ColorArchitecture onCopy={copy}/>
+    <LogoSuite/>
+    <SlidesSection/>
+    <DownloadHub/>
+    <Footer/>
+    {toast&&<div className="toast">{toast}</div>}
+  </>);
+}
+const boot=()=>{if(!window.Nav||!window.Footer)return setTimeout(boot,40);
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);};boot();
+</script></body></html>

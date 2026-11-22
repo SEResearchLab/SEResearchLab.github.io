@@ -1,0 +1,13 @@
+:root{
+  /* Base unit 4px. The poster works on a 12-column grid with a 24px gutter. */
+  --space-0:0px; --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px;
+  --space-5:20px; --space-6:24px; --space-8:32px; --space-10:40px; --space-12:48px;
+  --space-16:64px; --space-20:80px; --space-24:96px; --space-32:128px;
+
+  --gutter:24px;
+  --card-pad:24px;
+  --card-pad-lg:36px;
+  --section-gap:72px;
+  --page-max:1180px;
+  --measure:68ch;          /* prose line length */
+}
